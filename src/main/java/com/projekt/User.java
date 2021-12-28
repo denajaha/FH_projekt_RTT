@@ -1,9 +1,12 @@
 package com.projekt;
-import org.json.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import java.io.FileWriter;
+import java.io.FileReader;
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.util.ArrayList;
+import org.json.simple.parser.JSONParser;
 
 public class User {
     private static int users;
@@ -26,8 +29,8 @@ public class User {
         userlist.add(this);
     }
 
-    public static int getUsers() {
-        return users;
+    public static ArrayList<User> getUsers() {
+        return userlist;
     }
 
     public String getFirstname() {
@@ -66,12 +69,17 @@ public class User {
         this.password = sha256(password);;
     }
 
+
     public boolean compareHash(String input, String toCompare){
         if(sha256(input)==sha256(toCompare)){
             return true;
         }else{
             return false;
         }
+    }
+
+    public void loadDataFromJson(){
+        //Parser benutzen ?
     }
 
     ///** METHODE VON STACKOVERFLOW --- https://stackoverflow.com/questions/5531455/how-to-hash-some-string-with-sha256-in-java
@@ -91,6 +99,7 @@ public class User {
             throw new RuntimeException(ex);
         }
     }
+
 
     @Override
     public String toString() {
