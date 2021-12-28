@@ -19,7 +19,7 @@ public class User {
     //Admin, Supervisor, Kassierer ?
     private String role;
 
-    public User(String firstname, String surname, String username, String password, boolean newUser, String role) {
+    private User(String firstname, String surname, String username, String password, boolean newUser, String role) {
         users++;
         this.firstname = firstname;
         this.surname = surname;
@@ -31,6 +31,10 @@ public class User {
         }
         this.role = role;
         userlist.add(this);
+    }
+
+    public static User createNewUser(String firstname, String surname, String username, String password, String role){
+        return new User(firstname,surname,username,password, true,role);
     }
 
     public static ArrayList<User> getUsers() {
@@ -205,7 +209,6 @@ public class User {
             jsonobject.put("username", userlist.get(i).username);
             jsonobject.put("password", userlist.get(i).password);
             jsonobject.put("role", userlist.get(i).role);
-            System.out.println(jsonobject.toString());
             jsonArray.put(jsonobject);
         }
         try {
