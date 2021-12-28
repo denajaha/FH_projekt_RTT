@@ -78,9 +78,16 @@ public class User {
         }
     }
 
-    public void loadDataFromJson(){
-        //Parser benutzen ?
-    }
+    public static void loadDataFromJson(){
+        //Noch nicht fertig
+        try {
+            FileReader fileReader = new FileReader("users.json");
+            int i;
+            while ((i = fileReader.read()) != -1)
+                System.out.print((char)i);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }    }
 
     ///** METHODE VON STACKOVERFLOW --- https://stackoverflow.com/questions/5531455/how-to-hash-some-string-with-sha256-in-java
     public static String sha256(final String base) {
@@ -134,7 +141,6 @@ public class User {
             file.close();
         } catch (IOException e) {
             e.printStackTrace();
-
         }
     }
 }
