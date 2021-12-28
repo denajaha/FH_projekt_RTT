@@ -58,18 +58,74 @@ public class User {
     }
 
     public void setFirstname(String firstname) {
+        int index=-1;
+        for(int i=0; i<userlist.size();i++){
+            if(userlist.get(i).getFirstname().equals(this.firstname)){
+                if(userlist.get(i).getFirstname().equals(this.firstname)
+                        && userlist.get(i).getSurname().equals(this.surname)
+                        && userlist.get(i).getUsername().equals(this.username)
+                        && userlist.get(i).getPassword().equals(this.password)
+                        && userlist.get(i).getRole().equals(this.role)){
+                    index=i;
+                    break;
+                }
+            }
+        }
+        userlist.get(index).firstname = firstname;
         this.firstname = firstname;
     }
 
     public void setSurname(String surname) {
+        int index=-1;
+        for(int i=0; i<userlist.size();i++){
+            if(userlist.get(i).getFirstname().equals(this.surname)){
+                if(userlist.get(i).getFirstname().equals(this.firstname)
+                        && userlist.get(i).getSurname().equals(this.surname)
+                        && userlist.get(i).getUsername().equals(this.username)
+                        && userlist.get(i).getPassword().equals(this.password)
+                        && userlist.get(i).getRole().equals(this.role)){
+                    index=i;
+                    break;
+                }
+            }
+        }
+        userlist.get(index).firstname = surname;
         this.surname = surname;
     }
 
     public void setUsername(String username) {
+        int index=-1;
+        for(int i=0; i<userlist.size();i++){
+            if(userlist.get(i).getFirstname().equals(this.username)){
+                if(userlist.get(i).getFirstname().equals(this.firstname)
+                        && userlist.get(i).getSurname().equals(this.surname)
+                        && userlist.get(i).getUsername().equals(this.username)
+                        && userlist.get(i).getPassword().equals(this.password)
+                        && userlist.get(i).getRole().equals(this.role)){
+                    index=i;
+                    break;
+                }
+            }
+        }
+        userlist.get(index).firstname = username;
         this.username = username;
     }
 
     public void setPassword(String password) {
+        int index=-1;
+        for(int i=0; i<userlist.size();i++){
+            if(userlist.get(i).getFirstname().equals(this.password)){
+                if(userlist.get(i).getFirstname().equals(this.firstname)
+                        && userlist.get(i).getSurname().equals(this.surname)
+                        && userlist.get(i).getUsername().equals(this.username)
+                        && userlist.get(i).getPassword().equals(this.password)
+                        && userlist.get(i).getRole().equals(this.role)){
+                    index=i;
+                    break;
+                }
+            }
+        }
+        userlist.get(index).firstname = sha256(password);;
         this.password = sha256(password);;
     }
 
