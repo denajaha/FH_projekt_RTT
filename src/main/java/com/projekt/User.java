@@ -127,8 +127,10 @@ public class User {
         }
         try {
             //true besagt, dass daten angehängt werden sollen
+            JSONObject jsonObjecttoFile = new JSONObject();
+            jsonObjecttoFile.put("Userlist", jsonArray);
             file = new FileWriter("users.json",false);
-            file.write(jsonArray.toString());
+            file.write(jsonObjecttoFile.toString());
             file.close();
         } catch (IOException e) {
             e.printStackTrace();
