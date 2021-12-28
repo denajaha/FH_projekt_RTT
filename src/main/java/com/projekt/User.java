@@ -19,12 +19,16 @@ public class User {
     //Admin, Supervisor, Kassierer ?
     private String role;
 
-    public User(String firstname, String surname, String username, String password, String role) {
+    public User(String firstname, String surname, String username, String password, boolean newUser, String role) {
         users++;
         this.firstname = firstname;
         this.surname = surname;
         this.username = username;
-        this.password = sha256(password);
+        if(newUser==true){
+            this.password = sha256(password);
+        }else{
+            this.password = password;
+        }
         this.role = role;
         userlist.add(this);
     }
@@ -80,14 +84,30 @@ public class User {
 
     public static void loadDataFromJson(){
         //Noch nicht fertig
+        StringBuilder string = new StringBuilder();
         try {
             FileReader fileReader = new FileReader("users.json");
             int i;
-            while ((i = fileReader.read()) != -1)
+            while((i = fileReader.read()) != -1){
                 System.out.print((char)i);
+                string.append((char)i);
+            }
         } catch (IOException e) {
             e.printStackTrace();
-        }    }
+        }
+
+        String JSONstring = string.toString();
+
+        JSONObject jsonObj= new JSONObject(JSONstring);
+        JSONArray jsonArr = jsonObj.getJSONArray("Userlist");
+        ArrayList<User> userl = new ArrayList<>();
+        for(int i=0; i<jsonArr.length(); i++){
+            JSONObject jsonOb = jsonArr.getJSONObject(i);
+            User user = new User(jsonOb.getString("firstname"), jsonOb.getString("surname"), jsonOb.getString("username"), jsonOb.getString("password"), false, jsonOb.getString("role"));
+            userl.add(user);
+        }
+        userlist = userl;
+    }
 
     ///** METHODE VON STACKOVERFLOW --- https://stackoverflow.com/questions/5531455/how-to-hash-some-string-with-sha256-in-java
     public static String sha256(final String base) {
