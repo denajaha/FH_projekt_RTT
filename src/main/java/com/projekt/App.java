@@ -1,9 +1,29 @@
 package com.projekt;
 
+import javafx.application.*;
+import javafx.scene.*;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
+import javafx.stage.*;
+
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class App {
+public class App extends Application {
+
+    @Override
+    public void start(Stage primaryStage) {
+        primaryStage.setTitle("Hello World!");
+        Button btn = new Button();
+        btn.setText("Hello JavaFX!");
+        btn.setOnAction( (event) -> Platform.exit() );
+        Pane root = new StackPane();
+        root.getChildren().add(btn);
+        primaryStage.setScene(new Scene(root, 300, 150));
+        primaryStage.show();
+    }
+
+
 
     public static void main(String[] args) {
         /* Testmethoden Antoine*/
@@ -25,6 +45,7 @@ public class App {
         System.out.println(userliste.get(0).getFirstname());
         */
 
+        launch(args);
 
     }
 }
