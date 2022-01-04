@@ -44,7 +44,8 @@ public class App extends Application {
         ArrayList<User> userliste = User.getUsers();
         System.out.println(userliste.get(0).getFirstname());
         */
-
+        User.loadDataFromJson();
+        System.out.println(User.checkCredentials("MaMu", "test"));
         launch(args);
 
     }

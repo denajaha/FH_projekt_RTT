@@ -8,6 +8,7 @@ import java.security.MessageDigest;
 import java.util.ArrayList;
 import org.json.simple.parser.JSONParser;
 
+
 public class User {
     private static int users;
     private static ArrayList<User> userlist = new ArrayList<User>();
@@ -149,7 +150,6 @@ public class User {
             FileReader fileReader = new FileReader("users.json");
             int i;
             while((i = fileReader.read()) != -1){
-                System.out.print((char)i);
                 string.append((char)i);
             }
         } catch (IOException e) {
@@ -221,5 +221,19 @@ public class User {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static final boolean checkCredentials(String username, String password){
+
+        boolean result = false;
+
+        for(int i=0;i<3;i++){
+            if(userlist.get(i).getUsername().equals(username)){
+                if(userlist.get(i).getPassword().equals(sha256(password))){
+                    result = true;
+                }
+            }
+        }
+        return result;
     }
 }

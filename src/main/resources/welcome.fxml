@@ -7,17 +7,17 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="501.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Welcome">
+<AnchorPane prefHeight="353.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Welcome">
    <children>
       <Text layoutX="141.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" />
       <Text layoutX="141.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
-      <Button fx:id="loginButton" layoutX="193.0" layoutY="238.0" mnemonicParsing="false" text="Login" />
+      <Button fx:id="loginButton" layoutX="176.0" layoutY="224.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="68.0" text="L o g i n" />
       <ImageView fitHeight="88.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@login_user_logo.png" />
          </image>
       </ImageView>
-      <Label fx:id="usernameInput" layoutX="162.0" layoutY="109.0" prefHeight="25.0" prefWidth="106.0" text="Username" />
-      <Label fx:id="passwordInput" layoutX="163.0" layoutY="175.0" prefHeight="25.0" prefWidth="106.0" text="Password" />
+      <Label fx:id="usernameInput" graphicTextGap="10.0" layoutX="141.0" layoutY="109.0" prefHeight="25.0" prefWidth="135.0" style="-fx-border-color: #000000;" text="Username" />
+      <Label fx:id="passwordInput" accessibleRole="PASSWORD_FIELD" graphicTextGap="10.0" layoutX="142.0" layoutY="175.0" prefHeight="25.0" prefWidth="135.0" style="-fx-border-color: #000000;" text="Password" />
    </children>
 </AnchorPane>
