@@ -17,6 +17,7 @@ public class User {
     private String surname;
     private String username;
     private String password;
+    private String integrityKey;
     //Admin, Supervisor, Kassierer ?
     private String role;
 
@@ -24,7 +25,11 @@ public class User {
         users++;
         this.firstname = firstname;
         this.surname = surname;
-        this.username = username;
+        if(newUser==true){
+            this.username = sha256(username);
+        }else{
+            this.username = username;
+        }
         if(newUser==true){
             this.password = sha256(password);
         }else{
@@ -32,6 +37,11 @@ public class User {
         }
         this.role = role;
         userlist.add(this);
+        if(newUser==true){
+            this.integrityKey = sha256(sha256(username)+sha256(password));;
+        }else{
+            this.integrityKey = sha256(username+password);
+        }
     }
 
     public static User createNewUser(String firstname, String surname, String username, String password, String role){
@@ -60,6 +70,10 @@ public class User {
 
     public String getRole() {
         return role;
+    }
+
+    public String getIntegrityKey(){
+        return integrityKey;
     }
 
     public void setFirstname(String firstname) {
@@ -94,7 +108,7 @@ public class User {
                 }
             }
         }
-        userlist.get(index).firstname = surname;
+        userlist.get(index).surname = surname;
         this.surname = surname;
     }
 
@@ -112,7 +126,7 @@ public class User {
                 }
             }
         }
-        userlist.get(index).firstname = username;
+        userlist.get(index).username = sha256(username);
         this.username = username;
     }
 
@@ -130,10 +144,17 @@ public class User {
                 }
             }
         }
-        userlist.get(index).firstname = sha256(password);;
+        userlist.get(index).password = sha256(password);;
         this.password = sha256(password);;
     }
 
+    private void setIntegrityKey(String integrityKey) {
+        this.integrityKey = integrityKey;
+    }
+
+    private static String calculateIntegrityKey(String username, String password){
+        return sha256(sha256(username)+sha256(password));
+    }
 
     public boolean compareHash(String input, String toCompare){
         if(sha256(input)==sha256(toCompare)){
@@ -164,7 +185,11 @@ public class User {
         for(int i=0; i<jsonArr.length(); i++){
             JSONObject jsonOb = jsonArr.getJSONObject(i);
             User user = new User(jsonOb.getString("firstname"), jsonOb.getString("surname"), jsonOb.getString("username"), jsonOb.getString("password"), false, jsonOb.getString("role"));
-            userl.add(user);
+            if(user.getIntegrityKey().equals(jsonOb.getString("integrityKey"))){
+                userl.add(user);
+            }else{
+                System.out.println("Userdata not integer -- User not loaded from DB");
+            }
         }
         userlist = userl;
     }
@@ -196,6 +221,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
+                ", integrityKey='" + integrityKey + '\'' +
                 '}';
     }
 
@@ -209,6 +235,7 @@ public class User {
             jsonobject.put("username", userlist.get(i).username);
             jsonobject.put("password", userlist.get(i).password);
             jsonobject.put("role", userlist.get(i).role);
+            jsonobject.put("integrityKey", userlist.get(i).integrityKey);
             jsonArray.put(jsonobject);
         }
         try {
@@ -228,8 +255,8 @@ public class User {
         boolean result = false;
 
         for(int i=0;i<3;i++){
-            if(userlist.get(i).getUsername().equals(username)){
-                if(userlist.get(i).getPassword().equals(sha256(password))){
+            if(userlist.get(i).getUsername().equals(sha256(username))){
+                if(userlist.get(i).getPassword().equals(sha256(password)) /*&& userlist.get(i).getIntegrityKey().equals(calculateIntegrityKey(username,password))*/){
                     result = true;
                 }
             }
