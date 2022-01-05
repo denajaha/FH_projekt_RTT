@@ -36,12 +36,15 @@ public class User {
             this.password = password;
         }
         this.role = role;
-        userlist.add(this);
+
         if(newUser==true){
             this.integrityKey = sha256(sha256(username)+sha256(password));;
         }else{
             this.integrityKey = sha256(username+password);
         }
+
+        userlist.add(this);
+
     }
 
     public static User createNewUser(String firstname, String surname, String username, String password, String role){
@@ -256,7 +259,7 @@ public class User {
 
         for(int i=0;i<3;i++){
             if(userlist.get(i).getUsername().equals(sha256(username))){
-                if(userlist.get(i).getPassword().equals(sha256(password)) /*&& userlist.get(i).getIntegrityKey().equals(calculateIntegrityKey(username,password))*/){
+                if(userlist.get(i).getPassword().equals(sha256(password)) && userlist.get(i).getIntegrityKey().equals(calculateIntegrityKey(username,password))){
                     result = true;
                 }
             }
