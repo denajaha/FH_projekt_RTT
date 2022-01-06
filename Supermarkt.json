@@ -1,0 +1,112 @@
+{
+    "Lebensmittel": [
+        {
+            "Essig": "4",
+            "Oel": "8",
+            "Fertiggerichte": "3",
+            "Mehl": "1.50",
+            "Konserven": "2.50",
+            "Reis": "3",
+            "Zucker": "1"
+        }
+    ],
+    "Obst": [
+        {
+            "Aepfel": "3",
+            "Bananen": "2",
+            "Kirschen": "2",
+            "Pfirsiche": "3",
+            "Marillen": "2",
+            "Erdbeeren": "3",
+            "Himbeeren": "3"
+        }
+    ],
+    "Gemuese": [
+        {
+            "Gurken": "1.50",
+            "Paprika": "1",
+            "Tomaten": "3.50",
+            "Kohl": "2",
+            "Melanzani": "1.80",
+            "Zucchini": "3",
+            "Kuerbisse": "4"
+        }
+    ],
+    "Kuehlwaren": [
+        {
+            "Eier": "3",
+            "Fleisch": "7",
+            "Kaese": "5",
+            "Milchprodukte": "2",
+            "Wurst": "3",
+            "Fisch": "4",
+            "Feinkost": "2"
+        }
+    ],
+    "Tiefkuehl": [
+        {
+            "Eis": "4",
+            "Fertiggerichte": "4",
+            "Gemuese": "2.50",
+            "Pommes": "2"
+        }
+    ],
+    "Suesses": [
+        {
+            "Schnitten": "3",
+            "Waffeln": "3",
+            "Schokoriegeln": "1",
+            "Kaugummi": "3",
+            "Fruchtgummi": "1"
+        }
+    ],
+    "Salziges": [
+        {
+            "Chips": "2",
+            "Knabberein": "2",
+            "Nuesse": "3",
+            "Nacho & Dips": "3",
+            "Snacks": "1.50"
+        }
+    ],
+    "Alkoholfreie Getraenke": [
+        {
+            "Eistee": "1.50",
+            "Energydrinks": "1",
+            "Mineralwasser": "0.50",
+            "Saefte": "2",
+            "Sirupe": "2.50"
+        }
+    ],
+    "Alkoholische Getraenke": [
+        {
+            "Wein": "7",
+            "Bier": "2",
+            "Rum": "14",
+            "Whiskey": "16",
+            "Gin": "23",
+            "Sekt": "5",
+            "Vodka": "16",
+            "Tequila": "18"
+        }
+    ],
+    "Haushalt": [
+        {
+            "Klopapier": "3",
+            "Pflegemittel": "5",
+            "Muellsaecke": "2.50",
+            "Schuhpflege": "5",
+            "Gluehbirnen": "5",
+            "Waschmittel": "8",
+            "Kuechenartikel": "4"
+        }
+    ],
+    "Haustierartikel": [
+        {
+            "Trockenfutter-Hund": "12",
+            "Trockenfutter-Katze": "4",
+            "Nassfutter-Hund": "1",
+            "Nassfutter-Katze": "0.50"
+        }
+    ]
+}
