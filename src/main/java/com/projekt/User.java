@@ -268,6 +268,20 @@ public class User {
         }
     }
 
+    public static final User getUserCredentials(String username, String password){
+        User usera = null;
+        for (User user : userlist) {
+            if (user.getUsername().equals(sha256(username))) {
+                if (user.getPassword().equals(sha256(password)) && user.getIntegrityKey().equals(user.calculateIntegrityKey(username, password))) {
+                    usera = user;
+                }
+            }
+        }
+
+        return usera;
+
+    }
+
     public static final boolean checkCredentials(String username, String password){
 
         boolean result = false;

@@ -27,6 +27,15 @@ import java.net.URL;
 public class App extends Application {
 
     private Stage stage;
+    private static Session session;
+
+    public static void setSession(Session pSession){
+        session = pSession;
+    }
+
+    public static Session getSession(){
+        return session;
+    }
 
     @Override
     public void start(Stage primaryStage) {

@@ -47,6 +47,7 @@ public class FXMLController implements Initializable {
     public TextField money_tipped;
     public TextField totalAmount;
 
+
     @FXML
     private Label label;
 
@@ -77,6 +78,8 @@ public class FXMLController implements Initializable {
             catch (IOException e) {
                 e.printStackTrace();
             }
+            Session session = new Session(User.getUserCredentials(usernameInput.getText(),passwordInput.getText()));
+            App.setSession(session);
         }else{
             Stage primaryStage = new Stage();
             primaryStage.setTitle("Passwort Falsch");
