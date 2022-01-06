@@ -1,19 +1,22 @@
 package com.projekt;
-
-import javafx.application.*;
-import javafx.scene.*;
-import javafx.scene.control.*;
-import javafx.scene.layout.*;
-import javafx.stage.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import javafx.scene.layout.VBox;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+
 
 public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Hello World!");
+        /*primaryStage.setTitle("Hello World!");
         Button btn = new Button();
         btn.setText("Hello JavaFX!");
         btn.setOnAction( (event) -> Platform.exit() );
@@ -21,6 +24,26 @@ public class App extends Application {
         root.getChildren().add(btn);
         primaryStage.setScene(new Scene(root, 300, 150));
         primaryStage.show();
+        */
+
+        // Create the FXMLLoader
+        //FXMLLoader loader = new FXMLLoader();
+        // Path to the FXML File
+        //String fxmlDocPath = "src/main/resources/welcome.fxml";
+
+        try {
+            Parent root = FXMLLoader.load("src/main/resources/welcome.fxml");
+        }catch(Exception ex){
+            throw new RuntimeException(ex);
+        }
+
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+
+        primaryStage.setTitle("JavaFX and Gradle");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
     }
 
 
