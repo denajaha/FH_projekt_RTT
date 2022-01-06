@@ -68,7 +68,7 @@ public class FXMLController implements Initializable {
             try {
                 root = FXMLLoader.load(getClass().getClassLoader().getResource("mainPage.fxml"));
                 Stage stage = new Stage();
-                stage.setTitle("My New Stage Title");
+                stage.setTitle("RTT KASSENAPP");
                 stage.setScene(new Scene(root, 1200, 1200));
                 stage.show();
                 // Hide this current window (if this is what you want)
