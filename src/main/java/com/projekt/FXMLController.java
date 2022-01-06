@@ -1,12 +1,21 @@
 package com.projekt;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.scene.layout.Pane;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.scene.Node;
+import javafx.scene.layout.StackPane;
 
 public class FXMLController implements Initializable {
 
@@ -54,6 +63,31 @@ public class FXMLController implements Initializable {
 
     // Welcome Page Methods
     public void loginButtonClicked(ActionEvent actionEvent) {
+        if(User.checkCredentials(usernameInput.getText(),passwordInput.getText())){
+            Parent root;
+            try {
+                root = FXMLLoader.load(getClass().getClassLoader().getResource("mainPage.fxml"));
+                Stage stage = new Stage();
+                stage.setTitle("My New Stage Title");
+                stage.setScene(new Scene(root, 1200, 1200));
+                stage.show();
+                // Hide this current window (if this is what you want)
+                ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else{
+            Stage primaryStage = new Stage();
+            primaryStage.setTitle("Passwort Falsch");
+            Button btn = new Button();
+            btn.setText("PASSWORT FALSCH");
+            btn.setOnAction( (event) -> Platform.exit() );
+            Pane root = new StackPane();
+            root.getChildren().add(btn);
+            primaryStage.setScene(new Scene(root, 200, 150));
+            primaryStage.show();
+        }
     }
 
     // Main Page Methods
