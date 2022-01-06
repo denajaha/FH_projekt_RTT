@@ -41,7 +41,7 @@ public class FXMLController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         String javaVersion = System.getProperty("java.version");
         String javafxVersion = System.getProperty("javafx.version");
-        label.setText("Hello, JavaFX " + javafxVersion + "\nRunning on Java " + javaVersion + ".");
+        //label.setText("Hello, JavaFX " + javafxVersion + "\nRunning on Java " + javaVersion + ".");
     }
 
     public FXMLController(){
@@ -49,7 +49,6 @@ public class FXMLController implements Initializable {
     }
 
     public void loginButtonClicked(ActionEvent actionEvent) {
-
     }
 
     public void userChangeButtonClicked(ActionEvent actionEvent) {

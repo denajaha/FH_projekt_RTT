@@ -1,6 +1,8 @@
 package com.projekt;
 import java.io.FileInputStream;
 import java.io.IOException;
+
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
-
+import java.net.URL;
 
 public class App extends Application {
 
@@ -26,24 +28,16 @@ public class App extends Application {
         primaryStage.show();
         */
 
-        // Create the FXMLLoader
-        //FXMLLoader loader = new FXMLLoader();
-        // Path to the FXML File
-        //String fxmlDocPath = "src/main/resources/welcome.fxml";
-
+        Parent root = null;
         try {
-            Parent root = FXMLLoader.load("src/main/resources/welcome.fxml");
-        }catch(Exception ex){
-            throw new RuntimeException(ex);
+            root = FXMLLoader.load(getClass().getResource("/welcome.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
-
-        primaryStage.setTitle("JavaFX and Gradle");
+        Scene scene = new Scene(root, 300, 275);
+        primaryStage.setTitle("FXML Welcome");
         primaryStage.setScene(scene);
         primaryStage.show();
-
     }
 
 
