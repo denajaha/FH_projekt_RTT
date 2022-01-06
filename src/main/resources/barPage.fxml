@@ -17,7 +17,7 @@
          </image>
       </ImageView>
       <Text fx:id="userName" layoutX="164.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="userNamePlatzhalter" wrappingWidth="133.13671875" />
-      <Button fx:id="backToMainPageButton" layoutX="555.0" layoutY="505.0" mnemonicParsing="false" text="backToMainPageButton" />
+      <Button fx:id="backToMainPageButton" layoutX="555.0" layoutY="505.0" mnemonicParsing="false" text="backToMainPageButton" onAction="#backToMainPageButtonClicked"/>
       <Text fx:id="userRole" layoutX="164.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="userRolePlatzhalter" wrappingWidth="133.13671875" />
       <ScrollPane layoutX="23.0" layoutY="195.0" prefHeight="299.0" prefWidth="480.0" />
       <Text layoutX="528.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calculator" wrappingWidth="82.13671875" />

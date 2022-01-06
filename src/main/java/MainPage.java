@@ -1,3 +1,4 @@
+import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.ImageView;
@@ -18,5 +19,21 @@ public class MainPage {
 
     }
 
+    public void userChangeButtonClicked(javafx.event.ActionEvent actionEvent) {
+    }
+
+
+    public void settingsButtonClicked(ActionEvent actionEvent) {
+
+    }
+
+    public void cashPaymentButtonClicked(ActionEvent actionEvent) {
+        
+    }
+
+
+    public void cardPaymentButtonClicked(ActionEvent actionEvent) {
+
+    }
 
 }
