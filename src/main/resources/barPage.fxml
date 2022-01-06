@@ -27,8 +27,8 @@
       <Text layoutX="23.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Products" wrappingWidth="82.13671875" />
       <Text layoutX="528.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Money given" wrappingWidth="82.13671875" />
       <Text layoutX="528.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Money tipped" wrappingWidth="82.13671875" />
-      <Label fx:id="money_given" layoutX="528.0" layoutY="66.0" prefHeight="25.0" prefWidth="143.0" text="Money given" />
-      <Label fx:id="money_tipped" layoutX="528.0" layoutY="132.0" prefHeight="25.0" prefWidth="143.0" text="Money tipped" />
+      <TextField fx:id="money_given" layoutX="528.0" layoutY="66.0" prefHeight="25.0" prefWidth="143.0" text="Money given" />
+      <TextField fx:id="money_tipped" layoutX="528.0" layoutY="132.0" prefHeight="25.0" prefWidth="143.0" text="Money tipped" />
       <TextField fx:id="totalAmount" layoutX="354.0" layoutY="506.0" />
       <Text layoutX="256.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total" wrappingWidth="82.13671875" />
    </children>

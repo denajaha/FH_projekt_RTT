@@ -10,16 +10,19 @@ import javafx.scene.text.Text;
 
 public class FXMLController implements Initializable {
 
-    public Label usernameInput;
+    //welcome
+    public TextField usernameInput;
     public Button loginButton;
-    public Label passwordInput;
+    public TextField passwordInput;
 
+    //settings
     public Button backToMainPageButton;
     public Button saveButton;
     public ToggleButton toggleButtonOne;
     public ToggleButton toggleButtonTwo;
     public ToggleButton toggleButtonThree;
 
+    //mainPage
     public ImageView userImage;
     public Text userName;
     public Text userRole;
@@ -29,9 +32,10 @@ public class FXMLController implements Initializable {
     public Button cardPaymentButton;
     public ScrollPane order;
 
+    // barPage
     public TextField returnAmount;
-    public Label money_given;
-    public Label money_tipped;
+    public TextField money_given;
+    public TextField money_tipped;
     public TextField totalAmount;
 
     @FXML
@@ -48,9 +52,11 @@ public class FXMLController implements Initializable {
 
     }
 
+    // Welcome Page Methods
     public void loginButtonClicked(ActionEvent actionEvent) {
     }
 
+    // Main Page Methods
     public void userChangeButtonClicked(ActionEvent actionEvent) {
 
     }
@@ -67,6 +73,7 @@ public class FXMLController implements Initializable {
 
     }
 
+    // Settings Page Methods
     public void backToMainPageButtonClicked(ActionEvent actionEvent) {
 
     }

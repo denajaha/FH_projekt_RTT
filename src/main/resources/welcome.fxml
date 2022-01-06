@@ -10,6 +10,7 @@
 <?import javafx.scene.control.Label?>
 <?import java.util.ArrayList?>
 
+<?import javafx.scene.control.TextField?>
 <AnchorPane prefHeight="353.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projekt.FXMLController">
    <children>
       <Text layoutX="141.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" />
@@ -20,7 +21,7 @@
             <Image url="@login_user_logo.png" />
          </image>
       </ImageView>
-      <Label fx:id="usernameInput" graphicTextGap="10.0" layoutX="141.0" layoutY="109.0" prefHeight="25.0" prefWidth="135.0" style="-fx-border-color: #000000;" text="Username" />
-      <Label fx:id="passwordInput" accessibleRole="PASSWORD_FIELD" graphicTextGap="10.0" layoutX="142.0" layoutY="175.0" prefHeight="25.0" prefWidth="135.0" style="-fx-border-color: #000000;" text="Password" />
+      <TextField fx:id="usernameInput" graphicTextGap="10.0" layoutX="141.0" layoutY="109.0" prefHeight="25.0" prefWidth="135.0" style="-fx-border-color: #000000;" text="Username" />
+      <TextField fx:id="passwordInput" accessibleRole="PASSWORD_FIELD" graphicTextGap="10.0" layoutX="142.0" layoutY="175.0" prefHeight="25.0" prefWidth="135.0" style="-fx-border-color: #000000;" text="Password" />
    </children>
 </AnchorPane>
