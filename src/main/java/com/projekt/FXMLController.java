@@ -28,6 +28,7 @@ public class FXMLController implements Initializable {
     public Button cashPaymentButton;
     public Button cardPaymentButton;
     public ScrollPane order;
+
     public TextField returnAmount;
     public Label money_given;
     public Label money_tipped;
@@ -41,6 +42,10 @@ public class FXMLController implements Initializable {
         String javaVersion = System.getProperty("java.version");
         String javafxVersion = System.getProperty("javafx.version");
         label.setText("Hello, JavaFX " + javafxVersion + "\nRunning on Java " + javaVersion + ".");
+    }
+
+    public FXMLController(){
+
     }
 
     public void loginButtonClicked(ActionEvent actionEvent) {
