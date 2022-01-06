@@ -11,7 +11,7 @@
    <children>
       <Text layoutX="141.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" />
       <Text layoutX="141.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
-      <Button fx:id="loginButton" layoutX="176.0" layoutY="224.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="68.0" text="L o g i n" />
+      <Button fx:id="loginButton" layoutX="176.0" layoutY="224.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="68.0" text="L o g i n" onAction="#loginButtonClicked" />
       <ImageView fitHeight="88.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@login_user_logo.png" />
