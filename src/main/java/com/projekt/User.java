@@ -272,9 +272,9 @@ public class User {
 
         boolean result = false;
 
-        for(int i=0;i<userlist.size();i++){
-            if(userlist.get(i).getUsername().equals(sha256(username))){
-                if(userlist.get(i).getPassword().equals(sha256(password)) && userlist.get(i).getIntegrityKey().equals(userlist.get(i).calculateIntegrityKey(username,password))){
+        for (User user : userlist) {
+            if (user.getUsername().equals(sha256(username))) {
+                if (user.getPassword().equals(sha256(password)) && user.getIntegrityKey().equals(user.calculateIntegrityKey(username, password))) {
                     result = true;
                 }
             }
