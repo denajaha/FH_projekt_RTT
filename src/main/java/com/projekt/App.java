@@ -1,32 +1,13 @@
 package com.projekt;
-import java.io.FileInputStream;
 import java.io.IOException;
-
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import java.util.logging.Level;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.JavaFXBuilderFactory;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.net.URL;
 
 public class App extends Application {
-
-    private Stage stage;
     private static Session session;
 
     public static void setSession(Session pSession){
@@ -58,7 +39,7 @@ public class App extends Application {
 
     public static void main(String[] args) {
         /* Testmethoden Antoine*/
-
+        /*
         System.out.println("hello");
         User user1 = User.createNewUser("Max", "Mustermann", "MaMu", "test", "admin");
         System.out.println(user1.toString());
@@ -77,6 +58,7 @@ public class App extends Application {
 
         User.loadDataFromJson();
         System.out.println(User.checkCredentials("MaMu", "test"));
+         */
         launch(args);
 
     }
