@@ -38,9 +38,9 @@ public class User {
         this.role = role;
 
         if(newUser==true){
-            this.integrityKey = sha256(sha256(username)+sha256(password));;
+            this.integrityKey = sha256(sha256(username)+sha256(password)+sha256(role));;
         }else{
-            this.integrityKey = sha256(username+password);
+            this.integrityKey = sha256(username+password+sha256(role));
         }
 
         userlist.add(this);
@@ -155,8 +155,8 @@ public class User {
         this.integrityKey = integrityKey;
     }
 
-    private static String calculateIntegrityKey(String username, String password){
-        return sha256(sha256(username)+sha256(password));
+    private String calculateIntegrityKey(String username, String password){
+        return sha256(sha256(username)+sha256(password)+sha256(this.role));
     }
 
     public boolean compareHash(String input, String toCompare){
@@ -183,7 +183,12 @@ public class User {
         String JSONstring = string.toString();
 
         JSONObject jsonObj= new JSONObject(JSONstring);
+        String checkSumJson = jsonObj.getString("CheckSum");
         JSONArray jsonArr = jsonObj.getJSONArray("Userlist");
+        if(!(checkSumJson.equals(sha256(jsonArr.toString())))){
+            System.out.println("JSON-File nicht gut bro");
+            return;
+        }
         ArrayList<User> userl = new ArrayList<>();
         for(int i=0; i<jsonArr.length(); i++){
             JSONObject jsonOb = jsonArr.getJSONObject(i);
@@ -228,6 +233,15 @@ public class User {
                 '}';
     }
 
+    public boolean checkIfUsernameExists(String username){
+        for (int i=0; i<userlist.size();i++){
+            if(userlist.get(i).getUsername().equals(username)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     protected static void updateUserDatabase(){
         //Nur ein Versuch
         JSONArray jsonArray = new JSONArray();
@@ -245,6 +259,7 @@ public class User {
             //true besagt, dass daten angehängt werden sollen
             JSONObject jsonObjecttoFile = new JSONObject();
             jsonObjecttoFile.put("Userlist", jsonArray);
+            jsonObjecttoFile.put("CheckSum", sha256(jsonArray.toString()));
             file = new FileWriter("users.json",false);
             file.write(jsonObjecttoFile.toString());
             file.close();
@@ -257,9 +272,9 @@ public class User {
 
         boolean result = false;
 
-        for(int i=0;i<3;i++){
+        for(int i=0;i<userlist.size();i++){
             if(userlist.get(i).getUsername().equals(sha256(username))){
-                if(userlist.get(i).getPassword().equals(sha256(password)) && userlist.get(i).getIntegrityKey().equals(calculateIntegrityKey(username,password))){
+                if(userlist.get(i).getPassword().equals(sha256(password)) && userlist.get(i).getIntegrityKey().equals(userlist.get(i).calculateIntegrityKey(username,password))){
                     result = true;
                 }
             }
