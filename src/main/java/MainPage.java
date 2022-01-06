@@ -1,3 +1,4 @@
+import com.projekt.App;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -20,6 +21,7 @@ public class MainPage {
     }
 
     public void userChangeButtonClicked(javafx.event.ActionEvent actionEvent) {
+
     }
 
 
@@ -28,7 +30,7 @@ public class MainPage {
     }
 
     public void cashPaymentButtonClicked(ActionEvent actionEvent) {
-        
+
     }
 
 

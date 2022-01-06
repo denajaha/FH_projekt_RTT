@@ -10,11 +10,11 @@
 <?import javafx.scene.control.Label?>
 <?import java.util.ArrayList?>
 
-<AnchorPane prefHeight="353.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Welcome">
+<AnchorPane prefHeight="353.0" prefWidth="430.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projekt.FXMLController">
    <children>
       <Text layoutX="141.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:" />
       <Text layoutX="141.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" />
-      <Button fx:id="loginButton" layoutX="176.0" layoutY="224.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="68.0" text="L o g i n" onAction="#loginButtonClicked" />
+      <Button fx:id="loginButton" layoutX="176.0" layoutY="224.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="68.0" text="L o g i n" onAction="#loginButtonClicked"/>
       <ImageView fitHeight="88.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@login_user_logo.png" />

@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Settings">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projekt.FXMLController">
    <children>
       <Button fx:id="backToMainPageButton" layoutX="220.0" layoutY="332.0" mnemonicParsing="false" text="Back" />
       <Button fx:id="saveButton" layoutX="346.0" layoutY="332.0" mnemonicParsing="false" text="Save" />

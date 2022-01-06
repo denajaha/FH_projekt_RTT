@@ -18,7 +18,7 @@ public class Welcome {
 
     @FXML
     public void loginButtonClicked(ActionEvent actionEvent) {
-        if (User.checkCredentials(usernameInput.toString(), passwordInput.toString())) {
+         {
 
 
         }
