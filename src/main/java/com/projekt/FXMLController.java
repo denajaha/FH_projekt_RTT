@@ -85,17 +85,13 @@ public class FXMLController implements Initializable {
         if(User.checkCredentials(usernameInput.getText(),passwordInput.getText())){
             Parent root;
             try {
-
-                root = FXMLLoader.load(getClass().getClassLoader().getResource("mainPage.fxml"));
+                root = FXMLLoader.load(getClass().getClassLoader().getResource("UserManagement.fxml"));
                 Stage stage = new Stage();
                 stage.setTitle("RTT KASSENAPP");
                 stage.setScene(new Scene(root, 1200, 1200));
                 stage.show();
                 // Hide this current window (if this is what you want)
                 ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
-
-
-
             }
             catch (IOException e) {
                 e.printStackTrace();
