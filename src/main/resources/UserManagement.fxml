@@ -7,19 +7,18 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projekt.FXMLController">
    <children>
-      <TableView fx:id="tableusermgmt" layoutX="28.0" layoutY="21.0" prefHeight="358.0" prefWidth="234.0">
+      <TableView fx:id="tableusermgmt" editable="true" layoutX="28.0" layoutY="21.0" prefHeight="358.0" prefWidth="234.0">
         <columns>
-          <TableColumn prefWidth="75.0" text="Name" />
-          <TableColumn prefWidth="75.0" text="Vorname" />
-            <TableColumn prefWidth="75.0" text="Rolle" />
+          <TableColumn fx:id="firstname" prefWidth="75.0" text="firstname" />
+          <TableColumn fx:id="surname" prefWidth="75.0" text="surname" />
+            <TableColumn fx:id="role" prefWidth="75.0" text="role" />
         </columns>
       </TableView>
-      <Button layoutX="289.0" layoutY="26.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Load selected Userdata" />
+      <Button fx:id="loadUserButton" layoutX="289.0" layoutY="26.0" mnemonicParsing="false" onAction="#loadUser" prefHeight="26.0" prefWidth="154.0" text="Load selected Userdata" />
       <Button layoutX="458.0" layoutY="26.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="119.0" text="Save Data" />
-      <TextField fx:id="nameusermgmt" tableusermgmtlayoutX="289.0" layoutY="63.0" text="Name" />
+      <TextField fx:id="nameusermgmt" layoutX="289.0" layoutY="63.0" text="Name" />
       <TextField fx:id="surnameusermgmt" layoutX="289.0" layoutY="102.0" text="Vorname" />
       <TextField fx:id="roleuserusermgmt" layoutX="289.0" layoutY="142.0" text="Rolle" />
       <TextField fx:id="usernameusermgmt" layoutX="289.0" layoutY="180.0" text="Username" />

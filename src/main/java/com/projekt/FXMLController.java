@@ -16,6 +16,11 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.scene.layout.StackPane;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.collections.ObservableList;
+import javafx.collections.FXCollections;
 
 public class FXMLController implements Initializable {
 
@@ -48,12 +53,18 @@ public class FXMLController implements Initializable {
     public TextField totalAmount;
 
     //Usermanagement
-    public TableView tableusermgmt;
+    @FXML
+    public TableView <User> tableusermgmt;
     public TextField nameusermgmt;
     public TextField surnameusermgmt;
     public TextField passwordusermgmt;
     public TextField usernameusermgmt;
-
+    @FXML
+    public TableColumn <User,String> firstname;
+    @FXML
+    public TableColumn <User,String> surname;
+    @FXML
+    public TableColumn <User,String> role;
 
     @FXML
     private Label label;
@@ -74,6 +85,7 @@ public class FXMLController implements Initializable {
         if(User.checkCredentials(usernameInput.getText(),passwordInput.getText())){
             Parent root;
             try {
+
                 root = FXMLLoader.load(getClass().getClassLoader().getResource("mainPage.fxml"));
                 Stage stage = new Stage();
                 stage.setTitle("RTT KASSENAPP");
@@ -81,6 +93,9 @@ public class FXMLController implements Initializable {
                 stage.show();
                 // Hide this current window (if this is what you want)
                 ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+
+
+
             }
             catch (IOException e) {
                 e.printStackTrace();
@@ -99,6 +114,17 @@ public class FXMLController implements Initializable {
             primaryStage.show();
         }
     }
+
+    //UsermanagementMethod
+    public void loadUser(ActionEvent actionEvent) {
+        ObservableList<User> data = FXCollections.<User>observableArrayList();
+        data.addAll(User.getUsers());
+        firstname.setCellValueFactory(new PropertyValueFactory<User, String>("firstname"));
+        surname.setCellValueFactory(new PropertyValueFactory<User, String>("surname"));
+        role.setCellValueFactory(new PropertyValueFactory<User, String>("role"));
+        tableusermgmt.setItems(data);
+    }
+
 
     // Main Page Methods
     public void userChangeButtonClicked(ActionEvent actionEvent) {
