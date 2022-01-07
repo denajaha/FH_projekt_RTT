@@ -5,12 +5,11 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projekt.FXMLController">
    <children>
       <Button fx:id="backToMainPageButton" layoutX="220.0" layoutY="332.0" mnemonicParsing="false" text="Back" />
       <Button fx:id="saveButton" layoutX="346.0" layoutY="332.0" mnemonicParsing="false" text="Save" />
-      <ToggleButton fx:id="toggleButtonOne" layoutX="418.0" layoutY="28.0" mnemonicParsing="false" text="ToggleButton" />
+      <ToggleButton fx:id="toggleButtonOne" layoutX="418.0" layoutY="28.0" mnemonicParsing="false" onAction="#userSettingOpenuserSettingOpen" text="UserSettings" />
       <ToggleButton fx:id="toggleButtonTwo" layoutX="418.0" layoutY="67.0" mnemonicParsing="false" text="ToggleButton" />
       <ToggleButton fx:id="toggleButtonThree" layoutX="418.0" layoutY="105.0" mnemonicParsing="false" text="ToggleButton" />
       <Text layoutX="145.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="209.13671875" />
