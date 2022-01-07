@@ -133,7 +133,7 @@ public class User {
         }
         userlist.get(index).username = sha256(username);
         this.username = sha256(username);
-        setIntegrityKey(calculateIntegrityKey(this.username));
+        setIntegrityKey(calculateIntegrityKey(this.username, this.getPassword()));
         updateUserDatabase();
     }
 
@@ -153,13 +153,17 @@ public class User {
         }
         userlist.get(index).password = sha256(password);;
         this.password = sha256(password);
-        setIntegrityKey(calculateIntegrityKey(this.password));
+        setIntegrityKey(calculateIntegrityKey(this.username, this.password));
         updateUserDatabase();
     }
 
     private void setIntegrityKey(String integrityKey) {
         this.integrityKey = integrityKey;
-        updateUserDatabase();
+        for(int i=0; i<userlist.size();i++){
+            if(this.equals(userlist.get(i))){
+                userlist.get(i).integrityKey = integrityKey;
+            }
+        }
     }
 
     private String calculateIntegrityKey(String username, String password){
