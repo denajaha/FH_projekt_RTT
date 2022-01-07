@@ -47,6 +47,13 @@ public class FXMLController implements Initializable {
     public TextField money_tipped;
     public TextField totalAmount;
 
+    //Usermanagement
+    public TableView tableusermgmt;
+    public TextField nameusermgmt;
+    public TextField surnameusermgmt;
+    public TextField passwordusermgmt;
+    public TextField usernameusermgmt;
+
 
     @FXML
     private Label label;

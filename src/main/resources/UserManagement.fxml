@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projekt.FXMLController">
    <children>
-      <TableView layoutX="28.0" layoutY="21.0" prefHeight="358.0" prefWidth="234.0">
+      <TableView fx:id="tableusermgmt" layoutX="28.0" layoutY="21.0" prefHeight="358.0" prefWidth="234.0">
         <columns>
           <TableColumn prefWidth="75.0" text="Name" />
           <TableColumn prefWidth="75.0" text="Vorname" />
@@ -19,11 +19,11 @@
       </TableView>
       <Button layoutX="289.0" layoutY="26.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="154.0" text="Load selected Userdata" />
       <Button layoutX="458.0" layoutY="26.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="119.0" text="Save Data" />
-      <TextField layoutX="289.0" layoutY="63.0" text="Name" />
-      <TextField layoutX="289.0" layoutY="102.0" text="Vorname" />
-      <TextField layoutX="289.0" layoutY="142.0" text="Rolle" />
-      <TextField layoutX="289.0" layoutY="180.0" text="Username" />
-      <TextField layoutX="289.0" layoutY="224.0" text="Password" />
+      <TextField fx:id="nameusermgmt" tableusermgmtlayoutX="289.0" layoutY="63.0" text="Name" />
+      <TextField fx:id="surnameusermgmt" layoutX="289.0" layoutY="102.0" text="Vorname" />
+      <TextField fx:id="roleuserusermgmt" layoutX="289.0" layoutY="142.0" text="Rolle" />
+      <TextField fx:id="usernameusermgmt" layoutX="289.0" layoutY="180.0" text="Username" />
+      <TextField fx:id="passwordusermgmt" layoutX="289.0" layoutY="224.0" text="Password" />
       <Label layoutX="289.0" layoutY="268.0" prefHeight="74.0" prefWidth="273.0" text="Username und Passwort können IMMER nur in Kombination von beiden geändert werden." />
    </children>
 </AnchorPane>
