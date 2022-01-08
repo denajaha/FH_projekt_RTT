@@ -45,7 +45,6 @@ public class User {
 
         userlist.add(this);
         updateUserDatabase();
-
     }
 
     public static User createNewUser(String firstname, String surname, String username, String password, String role){
@@ -105,7 +104,6 @@ public class User {
         }
         this.firstname = firstname;
         userlist.get(index).firstname = firstname;
-        updateUserDatabase();
     }
 
     public void setSurname(String surname) {
@@ -124,7 +122,6 @@ public class User {
         }
         userlist.get(index).surname = surname;
         this.surname = surname;
-        updateUserDatabase();
     }
 
     public void setUsername(String username) {
@@ -144,7 +141,6 @@ public class User {
         userlist.get(index).username = sha256(username);
         this.username = sha256(username);
         setIntegrityKey(calculateIntegrityKey(this.username, this.getPassword()));
-        updateUserDatabase();
     }
 
     public void setPassword(String password) {
@@ -164,7 +160,6 @@ public class User {
         userlist.get(index).password = sha256(password);;
         this.password = sha256(password);
         setIntegrityKey(calculateIntegrityKey(this.username, this.password));
-        updateUserDatabase();
     }
 
     private void setIntegrityKey(String integrityKey) {

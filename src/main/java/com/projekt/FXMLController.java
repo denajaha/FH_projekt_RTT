@@ -144,6 +144,7 @@ public class FXMLController implements Initializable {
     }
 
     public void savemodifieduser(ActionEvent e){
+
         for(int i=0; i<User.getUsers().size();i++){
                 if(User.getUsers().get(i).equals(loadedUser)){
                     if(!(nameusermgmt.getText().equals(loadedUser.getFirstname()))) {
@@ -155,7 +156,6 @@ public class FXMLController implements Initializable {
                 }
         }
 
-
         User.updateUserDatabase();
         User.loadDataFromJson();
 
@@ -165,6 +165,8 @@ public class FXMLController implements Initializable {
         surname.setCellValueFactory(new PropertyValueFactory<User, String>("surname"));
         role.setCellValueFactory(new PropertyValueFactory<User, String>("role"));
         tableusermgmt.setItems(data);
+
+
     }
 
     public void createNewUser(ActionEvent actionEvent) {
@@ -178,6 +180,8 @@ public class FXMLController implements Initializable {
         surname.setCellValueFactory(new PropertyValueFactory<User, String>("surname"));
         role.setCellValueFactory(new PropertyValueFactory<User, String>("role"));
         tableusermgmt.setItems(data);
+
+
     }
 
     public void deleteUser(ActionEvent actionEvent) {
@@ -187,8 +191,6 @@ public class FXMLController implements Initializable {
             }
         }
 
-        User.updateUserDatabase();
-        User.loadDataFromJson();
 
 
         ObservableList<User> data = FXCollections.<User>observableArrayList();
@@ -197,6 +199,8 @@ public class FXMLController implements Initializable {
         surname.setCellValueFactory(new PropertyValueFactory<User, String>("surname"));
         role.setCellValueFactory(new PropertyValueFactory<User, String>("role"));
         tableusermgmt.setItems(data);
+
+
     }
 
 
