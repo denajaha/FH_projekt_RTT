@@ -103,15 +103,15 @@ public class User {
                 }
             }
         }
-        userlist.get(index).firstname = firstname;
         this.firstname = firstname;
+        userlist.get(index).firstname = firstname;
         updateUserDatabase();
     }
 
     public void setSurname(String surname) {
         int index=-1;
         for(int i=0; i<userlist.size();i++){
-            if(userlist.get(i).getFirstname().equals(this.surname)){
+            if(userlist.get(i).getSurname().equals(this.surname)){
                 if(userlist.get(i).getFirstname().equals(this.firstname)
                         && userlist.get(i).getSurname().equals(this.surname)
                         && userlist.get(i).getUsername().equals(this.username)

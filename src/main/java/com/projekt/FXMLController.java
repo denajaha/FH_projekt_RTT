@@ -60,6 +60,7 @@ public class FXMLController implements Initializable {
     public TextField surnameusermgmt;
     public TextField passwordusermgmt;
     public TextField usernameusermgmt;
+    public TextField roleuserusermgmt;
     public TextField nameusermgmt1;
     public TextField surnameusermgmt1;
     public TextField roleusermgmt1;
@@ -71,7 +72,7 @@ public class FXMLController implements Initializable {
     public TableColumn <User,String> surname;
     @FXML
     public TableColumn <User,String> role;
-
+    private User loadedUser;
     @FXML
     private Label label;
 
@@ -126,19 +127,69 @@ public class FXMLController implements Initializable {
         surname.setCellValueFactory(new PropertyValueFactory<User, String>("surname"));
         role.setCellValueFactory(new PropertyValueFactory<User, String>("role"));
         tableusermgmt.setItems(data);
+
+        tableusermgmt.setRowFactory( tv -> {
+            TableRow<User> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                    User rowdata = row.getItem();
+                    nameusermgmt.setText(rowdata.getFirstname());
+                    surnameusermgmt.setText(rowdata.getSurname());
+                    roleuserusermgmt.setText(rowdata.getRole());
+                    loadedUser = rowdata;
+                }
+            });
+            return row ;
+        });
     }
 
-    public void mouseclickedontable(ActionEvent e){
-        //User user = Object item = cell.getTableRow().getItem();
-        //int index = tableusermgmt.getSelectionModel().selectedIndexProperty().get();
-        //nameusermgmt.setText(user.getFirstname());
-        //surnameusermgmt.setText(user.getSurname());
+    public void savemodifieduser(ActionEvent e){
+        for(int i=0; i<User.getUsers().size();i++){
+                if(User.getUsers().get(i).equals(loadedUser)){
+                    if(!(nameusermgmt.getText().equals(loadedUser.getFirstname()))) {
+                        User.getUsers().get(i).setFirstname(nameusermgmt.getText());
+                    }
+                    if(!(surnameusermgmt.getText().equals(loadedUser.getSurname()))){
+                        User.getUsers().get(i).setSurname(surnameusermgmt.getText());
+                    }
+                }
+        }
+
+
+        User.updateUserDatabase();
+        User.loadDataFromJson();
+
+        ObservableList<User> data = FXCollections.<User>observableArrayList();
+        data.addAll(User.getUsers());
+        firstname.setCellValueFactory(new PropertyValueFactory<User, String>("firstname"));
+        surname.setCellValueFactory(new PropertyValueFactory<User, String>("surname"));
+        role.setCellValueFactory(new PropertyValueFactory<User, String>("role"));
+        tableusermgmt.setItems(data);
     }
 
     public void createNewUser(ActionEvent actionEvent) {
 
 
         User.createNewUser(nameusermgmt1.getText(), surnameusermgmt1.getText(),usernameusermgmt1.getText(), passwordusermgmt1.getText(), roleusermgmt1.getText());
+
+        ObservableList<User> data = FXCollections.<User>observableArrayList();
+        data.addAll(User.getUsers());
+        firstname.setCellValueFactory(new PropertyValueFactory<User, String>("firstname"));
+        surname.setCellValueFactory(new PropertyValueFactory<User, String>("surname"));
+        role.setCellValueFactory(new PropertyValueFactory<User, String>("role"));
+        tableusermgmt.setItems(data);
+    }
+
+    public void deleteUser(ActionEvent actionEvent) {
+        for(int i=0; i<User.getUsers().size();i++){
+            if(User.getUsers().get(i).equals(loadedUser)){
+                User.deleteUser(User.getUsers().get(i));
+            }
+        }
+
+        User.updateUserDatabase();
+        User.loadDataFromJson();
+
 
         ObservableList<User> data = FXCollections.<User>observableArrayList();
         data.addAll(User.getUsers());

@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="449.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projekt.FXMLController">
    <children>
-      <TableView fx:id="tableusermgmt" editable="true" layoutX="14.0" layoutY="21.0" onMouseClicked="#mouseclickedontable" prefHeight="419.0" prefWidth="263.0">
+      <TableView fx:id="tableusermgmt" editable="true" layoutX="14.0" layoutY="21.0" prefHeight="419.0" prefWidth="263.0">
         <columns>
           <TableColumn fx:id="firstname" prefWidth="89.0" text="firstname" />
           <TableColumn fx:id="surname" minWidth="0.0" prefWidth="101.0" text="surname" />
@@ -18,7 +18,7 @@
         </columns>
       </TableView>
       <Button fx:id="loadUserButton" layoutX="289.0" layoutY="26.0" mnemonicParsing="false" onAction="#loadUser" prefHeight="26.0" prefWidth="154.0" text="Load  Userdata" />
-      <Button fx:id="savemodifieduserdata" layoutX="458.0" layoutY="63.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="198.0" text="Save modified Userdata" />
+      <Button fx:id="savemodifieduserdata" layoutX="458.0" layoutY="63.0" mnemonicParsing="false" onAction="#savemodifieduser" prefHeight="26.0" prefWidth="198.0" text="Save modified Userdata" />
       <TextField fx:id="nameusermgmt" layoutX="289.0" layoutY="63.0" text="Name" />
       <TextField fx:id="surnameusermgmt" layoutX="289.0" layoutY="102.0" text="Vorname" />
       <TextField fx:id="roleuserusermgmt" layoutX="289.0" layoutY="142.0" text="Rolle" />
@@ -33,6 +33,6 @@
       <TextField fx:id="passwordusermgmt1" layoutX="465.0" layoutY="373.0" text="Password" />
       <Button layoutX="286.0" layoutY="415.0" mnemonicParsing="false" onAction="#createNewUser" prefHeight="26.0" prefWidth="340.0" text="Create new User" />
       <Label layoutX="474.0" layoutY="107.0" text="----Modifie Userdara ----" />
-      <Button fx:id="deleteseleceduser" layoutX="458.0" layoutY="26.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="198.0" text="Delete selected Userdata" />
+      <Button fx:id="deleteseleceduser" layoutX="458.0" layoutY="26.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="26.0" prefWidth="198.0" text="Delete selected Userdata" />
    </children>
 </AnchorPane>
