@@ -19,7 +19,7 @@ public class User {
     //Admin, Supervisor, Kassierer ?
     private String role;
 
-    private User(String firstname, String surname, String username, String password, boolean newUser, String role) {
+   private User(String firstname, String surname, String username, String password, boolean newUser, String role) {
         users++;
         this.firstname = firstname;
         this.surname = surname;

@@ -5,9 +5,9 @@ import org.json.JSONObject;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Iterator;
 
-public class Items {
+public class MainPage {
+
 
     public static void loadDataFromJson() {
         StringBuilder string = new StringBuilder();
@@ -31,21 +31,21 @@ public class Items {
 
         //Dynamische Funktion um die Keywords herauszubekommen falls man diese nicht kennt aus der JSON Datei
         JSONObject jsonObj= new org.json.JSONObject(JSONstring);
-        Iterator<String> keys = jsonObj.keySet().iterator();
-        while (keys.hasNext()){
-            keyword[counter] = keys.next();
+        // Ist eine while-Schleife mit --> while(xyz.hasNext())
+        for (String value : jsonObj.keySet()) {
+            keyword[counter] = value;
             counter++;
         }
-        JSONArray jsonArr = jsonObj.getJSONArray(keyword[0]);
+        JSONArray jsonArr = jsonObj.getJSONArray(keyword[2]);
         String[] Test = new String[100];
 
         //Dynamische Funktion um die SubKeywords aus dem Array herauszubekommen falls man diese nicht kennt
         int test =0;
         JSONObject jsonObs = jsonArr.getJSONObject(test);
-        Iterator<String > penis = jsonObs.keySet().iterator();
-        while(penis.hasNext()) {
-            Test[test] = penis.next();
-            test ++;
+        // Ist eine while-Schleife mit --> while(xyz.hasNext())
+        for (String s : jsonObs.keySet()) {
+            Test[test] = s;
+            test++;
         }
 
         // Muss erweitert werden um Sub-Keys zu bekommen ohne diese zu wissen um dieses universel zu machen
@@ -53,7 +53,6 @@ public class Items {
             //JSONObject jsonOb = jsonArr.getJSONObject(i);
             price[i] = jsonObs.getString(Test[i]);
             //keyword[0] = jsonOb.getString("Konserven");
-            //keyword[1] = jsonOb.getString("Essig");
         }
 
         float[] parser = new float[100];
@@ -65,9 +64,7 @@ public class Items {
             System.out.print(" ");
             System.out.println(parser[i]);
         }
-
-
-
+        System.out.println(parser[0]+parser[1]);
     }
     public static void main(String[] args) {
         loadDataFromJson();

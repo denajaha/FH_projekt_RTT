@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class App extends Application {
 
+
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Hello World!");
@@ -27,7 +28,8 @@ public class App extends Application {
 
     public static void main(String[] args) {
         /* Testmethoden Antoine*/
-        /*
+
+    /*
         System.out.println("hello");
         User user1 = User.createNewUser("Max", "Mustermann", "MaMu", "test", "admin");
         System.out.println(user1.toString());
@@ -43,9 +45,12 @@ public class App extends Application {
         user1.setFirstname("Peter");
         ArrayList<User> userliste = User.getUsers();
         System.out.println(userliste.get(0).getFirstname());
-        */
+
 
         launch(args);
+    */
+
+
 
     }
 }
