@@ -157,6 +157,7 @@ public class FXMLController implements Initializable {
         }
 
         User.updateUserDatabase();
+        User.loadDataFromJson();
 
         ObservableList<User> data = FXCollections.<User>observableArrayList();
         data.addAll(User.getUsers());
