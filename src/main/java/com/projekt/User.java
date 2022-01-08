@@ -44,11 +44,21 @@ public class User {
         }
 
         userlist.add(this);
+        updateUserDatabase();
 
     }
 
     public static User createNewUser(String firstname, String surname, String username, String password, String role){
         return new User(firstname,surname,username,password, true,role);
+    }
+
+    public static void deleteUser(User user){
+        for(int i=0; i<userlist.size();i++){
+            if(userlist.get(i).equals(user)){
+                userlist.remove(i);
+            }
+        }
+        updateUserDatabase();
     }
 
     public static ArrayList<User> getUsers() {

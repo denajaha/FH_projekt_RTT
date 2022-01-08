@@ -1,4 +1,5 @@
 package com.projekt;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -59,6 +60,11 @@ public class FXMLController implements Initializable {
     public TextField surnameusermgmt;
     public TextField passwordusermgmt;
     public TextField usernameusermgmt;
+    public TextField nameusermgmt1;
+    public TextField surnameusermgmt1;
+    public TextField roleusermgmt1;
+    public TextField passwordusermgmt1;
+    public TextField usernameusermgmt1;
     @FXML
     public TableColumn <User,String> firstname;
     @FXML
@@ -109,6 +115,7 @@ public class FXMLController implements Initializable {
             primaryStage.setScene(new Scene(root, 200, 150));
             primaryStage.show();
         }
+
     }
 
     //UsermanagementMethod
@@ -121,6 +128,27 @@ public class FXMLController implements Initializable {
         tableusermgmt.setItems(data);
     }
 
+    public void mouseclickedontable(ActionEvent e){
+        //User user = Object item = cell.getTableRow().getItem();
+        //int index = tableusermgmt.getSelectionModel().selectedIndexProperty().get();
+        //nameusermgmt.setText(user.getFirstname());
+        //surnameusermgmt.setText(user.getSurname());
+    }
+
+    public void createNewUser(ActionEvent actionEvent) {
+
+
+        User.createNewUser(nameusermgmt1.getText(), surnameusermgmt1.getText(),usernameusermgmt1.getText(), passwordusermgmt1.getText(), roleusermgmt1.getText());
+
+        ObservableList<User> data = FXCollections.<User>observableArrayList();
+        data.addAll(User.getUsers());
+        firstname.setCellValueFactory(new PropertyValueFactory<User, String>("firstname"));
+        surname.setCellValueFactory(new PropertyValueFactory<User, String>("surname"));
+        role.setCellValueFactory(new PropertyValueFactory<User, String>("role"));
+        tableusermgmt.setItems(data);
+    }
+
+
 
     // Main Page Methods
     public void userChangeButtonClicked(ActionEvent actionEvent) {
@@ -130,7 +158,7 @@ public class FXMLController implements Initializable {
     public void settingsButtonClicked(ActionEvent actionEvent) {
         Parent root;
         try {
-                root = FXMLLoader.load(getClass().getClassLoader().getResource("UserManagement.fxml"));
+                root = FXMLLoader.load(getClass().getClassLoader().getResource("settings.fxml"));
                 Stage stage = new Stage();
                 stage.setTitle("RTT KASSENAPP");
                 stage.setScene(new Scene(root, 1200, 1200));
