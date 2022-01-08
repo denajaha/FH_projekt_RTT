@@ -131,7 +131,7 @@ public class FXMLController implements Initializable {
         tableusermgmt.setRowFactory( tv -> {
             TableRow<User> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
-                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                if (event.getClickCount() >= 1 && (! row.isEmpty()) ) {
                     User rowdata = row.getItem();
                     nameusermgmt.setText(rowdata.getFirstname());
                     surnameusermgmt.setText(rowdata.getSurname());
