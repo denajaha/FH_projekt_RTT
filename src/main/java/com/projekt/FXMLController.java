@@ -94,7 +94,7 @@ public class FXMLController implements Initializable {
                 root = FXMLLoader.load(getClass().getClassLoader().getResource("mainPage.fxml"));
                 Stage stage = new Stage();
                 stage.setTitle("RTT KASSENAPP");
-                stage.setScene(new Scene(root, 1200, 1200));
+                stage.setScene(new Scene(root, 750, 550));
                 stage.show();
                 // Hide this current window (if this is what you want)
                 ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
@@ -161,7 +161,7 @@ public class FXMLController implements Initializable {
                 root = FXMLLoader.load(getClass().getClassLoader().getResource("settings.fxml"));
                 Stage stage = new Stage();
                 stage.setTitle("RTT KASSENAPP");
-                stage.setScene(new Scene(root, 1200, 1200));
+                stage.setScene(new Scene(root, 750, 550));
                 stage.show();
                 // Hide this current window (if this is what you want)
                 ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
@@ -189,7 +189,7 @@ public class FXMLController implements Initializable {
                 root = FXMLLoader.load(getClass().getClassLoader().getResource("UserManagement.fxml"));
                 Stage stage = new Stage();
                 stage.setTitle("RTT KASSENAPP");
-                stage.setScene(new Scene(root, 1200, 1200));
+                stage.setScene(new Scene(root, 750, 550));
                 stage.show();
                 // Hide this current window (if this is what you want)
                 ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
