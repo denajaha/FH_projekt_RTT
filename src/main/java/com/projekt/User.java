@@ -11,6 +11,7 @@ import org.json.simple.parser.JSONParser;
 
 public class User {
     private static int users;
+    private int userid;
     private static ArrayList<User> userlist = new ArrayList<User>();
     private static FileWriter file;
     private String firstname;
@@ -21,8 +22,13 @@ public class User {
     //Admin, Supervisor, Kassierer ?
     private String role;
 
-    private User(String firstname, String surname, String username, String password, boolean newUser, String role) {
+    private User(String firstname, String surname, String username, String password, boolean newUser, String role, int userid) {
         users++;
+        if(newUser==true){
+            this.userid = (int)(Math.random()*(2147483646-200000000)+200000000);
+        }else{
+            this.userid=userid;
+        }
         this.firstname = firstname;
         this.surname = surname;
         if(newUser==true){
@@ -48,7 +54,7 @@ public class User {
     }
 
     public static User createNewUser(String firstname, String surname, String username, String password, String role){
-        return new User(firstname,surname,username,password, true,role);
+        return new User(firstname,surname,username,password, true,role,5);
     }
 
     public static void deleteUser(User user){
@@ -208,7 +214,7 @@ public class User {
         ArrayList<User> userl = new ArrayList<>();
         for(int i=0; i<jsonArr.length(); i++){
             JSONObject jsonOb = jsonArr.getJSONObject(i);
-            User user = new User(jsonOb.getString("firstname"), jsonOb.getString("surname"), jsonOb.getString("username"), jsonOb.getString("password"), false, jsonOb.getString("role"));
+            User user = new User(jsonOb.getString("firstname"), jsonOb.getString("surname"), jsonOb.getString("username"), jsonOb.getString("password"), false, jsonOb.getString("role"),jsonOb.getInt("userid"));
             if(user.getIntegrityKey().equals(jsonOb.getString("integrityKey"))){
                 userl.add(user);
             }else{
@@ -268,6 +274,7 @@ public class User {
             jsonobject.put("username", userlist.get(i).username);
             jsonobject.put("password", userlist.get(i).password);
             jsonobject.put("role", userlist.get(i).role);
+            jsonobject.put("userid", userlist.get(i).userid);
             jsonobject.put("integrityKey", userlist.get(i).integrityKey);
             jsonArray.put(jsonobject);
         }
