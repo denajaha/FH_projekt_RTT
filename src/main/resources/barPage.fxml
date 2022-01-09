@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="545.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MainPage">
+<AnchorPane prefHeight="545.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projekt.FXMLController">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -17,7 +17,7 @@
          </image>
       </ImageView>
       <Text fx:id="userName" layoutX="164.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="userNamePlatzhalter" wrappingWidth="133.13671875" />
-      <Button fx:id="backToMainPageButton" layoutX="555.0" layoutY="505.0" mnemonicParsing="false" text="backToMainPageButton" />
+      <Button fx:id="backToMainPageButton" layoutX="555.0" layoutY="505.0" mnemonicParsing="false" text="backToMainPageButton" onAction="#backToMainPageButtonClicked"/>
       <Text fx:id="userRole" layoutX="164.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="userRolePlatzhalter" wrappingWidth="133.13671875" />
       <ScrollPane layoutX="23.0" layoutY="195.0" prefHeight="299.0" prefWidth="480.0" />
       <Text layoutX="528.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calculator" wrappingWidth="82.13671875" />
@@ -27,8 +27,8 @@
       <Text layoutX="23.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Products" wrappingWidth="82.13671875" />
       <Text layoutX="528.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Money given" wrappingWidth="82.13671875" />
       <Text layoutX="528.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Money tipped" wrappingWidth="82.13671875" />
-      <Label fx:id="money_given" layoutX="528.0" layoutY="66.0" prefHeight="25.0" prefWidth="143.0" text="Money given" />
-      <Label fx:id="money_tipped" layoutX="528.0" layoutY="132.0" prefHeight="25.0" prefWidth="143.0" text="Money tipped" />
+      <TextField fx:id="money_given" layoutX="528.0" layoutY="66.0" prefHeight="25.0" prefWidth="143.0" text="Money given" />
+      <TextField fx:id="money_tipped" layoutX="528.0" layoutY="132.0" prefHeight="25.0" prefWidth="143.0" text="Money tipped" />
       <TextField fx:id="totalAmount" layoutX="354.0" layoutY="506.0" />
       <Text layoutX="256.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total" wrappingWidth="82.13671875" />
    </children>
