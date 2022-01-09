@@ -119,7 +119,7 @@ public class FXMLController implements Initializable {
 
     }
 
-    //UsermanagementMethod
+    //Usermanagement Methods
     public void loadUser(ActionEvent actionEvent) {
         ObservableList<User> data = FXCollections.<User>observableArrayList();
         data.addAll(User.getUsers());
@@ -226,7 +226,18 @@ public class FXMLController implements Initializable {
     }
 
     public void cashPaymentButtonClicked(ActionEvent actionEvent) {
-
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("barPage.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("RTT KASSENAPP");
+            stage.setScene(new Scene(root, 750, 550));
+            stage.show();
+            // Hide this current window (if this is what you want)
+            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void cardPaymentButtonClicked(ActionEvent actionEvent) {
