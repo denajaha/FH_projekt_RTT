@@ -64,7 +64,7 @@ public class App extends Application {
         System.out.println(User.checkCredentials("MaMu", "test"));
         */
         launch(args);
-    */
+   
 
 
 
