@@ -22,7 +22,11 @@ public class User {
     //Admin, Supervisor, Kassierer ?
     private String role;
 
+
+ 
+
     private User(String firstname, String surname, String username, String password, boolean newUser, String role, int userid) {
+
         users++;
         if(newUser==true){
             this.userid = (int)(Math.random()*(2147483646-200000000)+200000000);
