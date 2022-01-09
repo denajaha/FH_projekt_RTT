@@ -1,27 +1,40 @@
 package com.projekt;
-
-import javafx.application.*;
-import javafx.scene.*;
-import javafx.scene.control.*;
-import javafx.scene.layout.*;
-import javafx.stage.*;
-
-import java.lang.reflect.Array;
+import java.io.IOException;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import java.util.ArrayList;
 
+
 public class App extends Application {
+    private static Session session;
+
+    public static void setSession(Session pSession){
+        session = pSession;
+    }
+
+    public static Session getSession(){
+        return session;
+    }
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("Hello World!");
-        Button btn = new Button();
-        btn.setText("Hello JavaFX!");
-        btn.setOnAction( (event) -> Platform.exit() );
-        Pane root = new StackPane();
-        root.getChildren().add(btn);
-        primaryStage.setScene(new Scene(root, 300, 150));
+        User.loadDataFromJson();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/welcome.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene scene = new Scene(root, 300, 275);
+        primaryStage.setTitle("FXML Welcome");
+        primaryStage.setScene(scene);
         primaryStage.show();
     }
+
+
 
 
 
@@ -43,8 +56,10 @@ public class App extends Application {
         user1.setFirstname("Peter");
         ArrayList<User> userliste = User.getUsers();
         System.out.println(userliste.get(0).getFirstname());
-        */
 
+        User.loadDataFromJson();
+        System.out.println(User.checkCredentials("MaMu", "test"));
+        */
         launch(args);
 
     }
