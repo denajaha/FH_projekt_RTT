@@ -156,16 +156,18 @@ public class FXMLController implements Initializable {
                 }
         }
 
-        User.updateUserDatabase();
-        User.loadDataFromJson();
+        //User.updateUserDatabase();
+        //User.loadDataFromJson();
 
-        ObservableList<User> data = FXCollections.<User>observableArrayList();
-        data.addAll(User.getUsers());
+        ObservableList<User> peter = FXCollections.<User>observableArrayList();
+        peter.addAll(User.getUsers());
+        //System.out.println(peter.toString());
         firstname.setCellValueFactory(new PropertyValueFactory<User, String>("firstname"));
         surname.setCellValueFactory(new PropertyValueFactory<User, String>("surname"));
         role.setCellValueFactory(new PropertyValueFactory<User, String>("role"));
-        tableusermgmt.setItems(data);
-
+        tableusermgmt.setItems(peter);
+        tableusermgmt.getColumns().get(0).setVisible(false);
+        tableusermgmt.getColumns().get(0).setVisible(true);
 
     }
 
@@ -211,11 +213,10 @@ public class FXMLController implements Initializable {
         try {
             root = FXMLLoader.load(getClass().getClassLoader().getResource("welcome.fxml"));
             Stage stage = new Stage();
-            stage.setTitle("Login");
-            stage.setScene(new Scene(root, 750, 550));
+            stage.setScene(new Scene(root, 300, 275));
             stage.show();
             // Hide this current window (if this is what you want)
-            //((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             e.printStackTrace();
         }
