@@ -17,7 +17,7 @@
       <Button fx:id="userChangeButton" layoutX="616.0" layoutY="31.0" mnemonicParsing="false" onAction="#userChangeButtonClicked" text="Change User" />
       <Button fx:id="settingsButton" layoutX="616.0" layoutY="77.0" mnemonicParsing="false" onAction="#settingsButtonClicked" prefHeight="25.0" prefWidth="84.0" text="Settings" />
       <ScrollPane layoutX="23.0" layoutY="199.0" prefHeight="323.0" prefWidth="394.0" />
-      <Button fx:id="cashPaymentButton" layoutX="578.0" layoutY="497.0" mnemonicParsing="false" onAction="#cashPaymentButtonClicked" prefHeight="25.0" prefWidth="122.0" text="Pay in Cash" />
+      <Button fx:id="cashPaymentPayButton" layoutX="578.0" layoutY="497.0" mnemonicParsing="false" onAction="#cashPaymentButtonClicked" prefHeight="25.0" prefWidth="122.0" text="Pay in Cash" />
       <Button fx:id="cardPaymentButton" layoutX="442.0" layoutY="497.0" mnemonicParsing="false" onAction="#cardPaymentButtonClicked" prefHeight="25.0" prefWidth="122.0" text="Pay with Card" />
       <Text layoutX="442.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order" wrappingWidth="82.13671875" />
       <ScrollPane fx:id="order" layoutX="442.0" layoutY="199.0" prefHeight="287.0" prefWidth="258.0" />

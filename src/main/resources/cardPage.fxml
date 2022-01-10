@@ -5,6 +5,6 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projekt.FXMLController">
    <children>
-      <Text layoutX="223.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thank you for your purchase!" textAlignment="CENTER" />
+      <Text layoutX="300.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thank you for your purchase!" textAlignment="CENTER" />
    </children>
 </AnchorPane>

@@ -27,6 +27,6 @@
       <TextField fx:id="money_tipped" layoutX="528.0" layoutY="132.0" prefHeight="25.0" prefWidth="143.0" text="Money tipped" />
       <TextField fx:id="totalAmount" layoutX="354.0" layoutY="506.0" />
       <Text layoutX="256.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total" wrappingWidth="82.13671875" />
-      <Button layoutX="636.0" layoutY="506.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="89.0" text="Pay" />
+      <Button fx:id="cashPaymentButton" layoutX="636.0" layoutY="506.0" mnemonicParsing="false" onAction="#cardPaymentButtonClicked" prefHeight="25.0" prefWidth="89.0" text="Pay" />
    </children>
 </AnchorPane>
