@@ -239,7 +239,18 @@ public class FXMLController implements Initializable {
     }
 
     public void cardPaymentButtonClicked(ActionEvent actionEvent) {
-
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("cardPage.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Goodbye!");
+            stage.setScene(new Scene(root, 750, 550));
+            stage.show();
+            // Hide this current window (if this is what you want)
+            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // Settings Page Methods
