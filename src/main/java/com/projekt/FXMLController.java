@@ -73,8 +73,6 @@ public class FXMLController implements Initializable {
     @FXML
     public TableColumn <User,String> role;
     private User loadedUser;
-    @FXML
-    private Label label;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -246,7 +244,16 @@ public class FXMLController implements Initializable {
 
     // Settings Page Methods
     public void backToMainPageButtonClicked(ActionEvent actionEvent) {
-
+        Parent root;
+        try {
+        root= FXMLLoader.load(getClass().getClassLoader().getResource("mainPage.fxml"));
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void userSettingOpen(ActionEvent actionEvent) {
