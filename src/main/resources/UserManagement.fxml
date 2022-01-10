@@ -29,6 +29,6 @@
       <Button layoutX="286.0" layoutY="415.0" mnemonicParsing="false" onAction="#createNewUser" prefHeight="26.0" prefWidth="277.0" text="Create new User" />
       <Label layoutX="492.0" layoutY="106.0" text="----Modify Userdata ----" />
       <Button fx:id="deleteseleceduser" layoutX="458.0" layoutY="26.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="26.0" prefWidth="198.0" text="Delete selected Userdata" />
-      <Button layoutX="573.0" layoutY="415.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="41.0" text="Back" />
+      <Button fx:id="goBack" layoutX="573.0" layoutY="415.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="41.0" text="Back" onAction="#backToMainPageButtonClicked" />
    </children>
 </AnchorPane>

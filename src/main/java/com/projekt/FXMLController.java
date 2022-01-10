@@ -67,6 +67,7 @@ public class FXMLController implements Initializable {
     public TextField roleusermgmt1;
     public TextField passwordusermgmt1;
     public TextField usernameusermgmt1;
+    public Button goBack;
     @FXML
     public TableColumn <User,String> firstname;
     @FXML
