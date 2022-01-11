@@ -5,72 +5,111 @@ import org.json.JSONObject;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Scanner;
 
 public class MainPage {
 
+    private final String[] price = new String[50];
+    private final String[] key = new String[50];
+    private final String[] subKey = new String[50];
+    private String JSONstring;
 
-    public static void loadDataFromJson() {
+
+    private static int KeyCount = 0;
+    private static int subKeyCount = 0;
+
+    public MainPage() {}
+
+    public String getJSONstring() {
+        return JSONstring;
+    }
+    public String[] getKey() {
+        return key;
+    }
+    public String[] getSubKey() {
+        return subKey;
+    }
+    public String[] getPrice() {
+        return price;
+    }
+
+    public void loadDataFromJson(String FileName) {
         StringBuilder string = new StringBuilder();
         try {
-            FileReader fileReader = new FileReader("Supermarkt.json");
+            FileReader fileReader = new FileReader(FileName);
             int i;
             while ((i = fileReader.read()) != -1) {
-                //System.out.print((char) i);
                 string.append((char) i);
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
+        this.JSONstring = string.toString();
+    }
 
-        String JSONstring = string.toString();
+    public void getKeyFromJson(String JSONstring) {
 
-        // Muss so erweitert werden damit der String dynamisch wird
-        int counter=0;
-        String[] price = new String[100];
-        String[] keyword = new String[100];
-
-        //Dynamische Funktion um die Keywords herauszubekommen falls man diese nicht kennt aus der JSON Datei
-        JSONObject jsonObj= new org.json.JSONObject(JSONstring);
+        JSONObject jsonObj = new org.json.JSONObject(JSONstring);
         // Ist eine while-Schleife mit --> while(xyz.hasNext())
         for (String value : jsonObj.keySet()) {
-            keyword[counter] = value;
-            counter++;
+            this.key[KeyCount] = value;
+            KeyCount++;
         }
-        JSONArray jsonArr = jsonObj.getJSONArray(keyword[2]);
-        String[] Test = new String[100];
 
-        //Dynamische Funktion um die SubKeywords aus dem Array herauszubekommen falls man diese nicht kennt
-        int test =0;
-        JSONObject jsonObs = jsonArr.getJSONObject(test);
-        // Ist eine while-Schleife mit --> while(xyz.hasNext())
+    }
+
+    public void getsubKeyFromJson(String JSONstring, String Key) {
+        JSONObject jsonObj = new org.json.JSONObject(JSONstring);
+        JSONArray jsonArr = jsonObj.getJSONArray(Key);
+        JSONObject jsonObs = jsonArr.getJSONObject(subKeyCount);
         for (String s : jsonObs.keySet()) {
-            Test[test] = s;
-            test++;
+            this.subKey[subKeyCount] = s;
+            subKeyCount++;
         }
+    }
 
-        // Muss erweitert werden um Sub-Keys zu bekommen ohne diese zu wissen um dieses universel zu machen
-        for(int i=0; i<5; i++){
-            //JSONObject jsonOb = jsonArr.getJSONObject(i);
-            price[i] = jsonObs.getString(Test[i]);
-            //keyword[0] = jsonOb.getString("Konserven");
+    public void getPriceFromsubKeys (String JSONstring, String Key){
+
+        JSONObject jsonObj = new org.json.JSONObject(JSONstring);
+        JSONArray jsonArr = jsonObj.getJSONArray(Key);
+        //JSONObject jsonObs = jsonArr.getJSONObject(subKeyCount);
+
+        for(int i=0; i<1; i++){
+            JSONObject jsonOb = jsonArr.getJSONObject(i);
+            this.price[i] = jsonOb.getString(this.subKey[i]);
+            //this.key[0] = jsonOb.getString("Konserven");
         }
+    }
 
-        float[] parser = new float[100];
+    @Override
+    public String toString() {
+        return "Subkey: " + this.price[3];
+    }
+    //float[] parser = new float[100];
 
-        // muss verbessert werden um die Preise von Strings in Floating Zahlen umzuwandeln
-        for(int i =0; i<5;i++) {
+    // muss verbessert werden um die Preise von Strings in Floating Zahlen umzuwandeln
+        /*for(int i =0; i<5;i++) {
             parser[i] = Float.parseFloat(price[i]);
             System.out.print(Test[i]);
             System.out.print(" ");
             System.out.println(parser[i]);
         }
-        System.out.println(parser[0]+parser[1]);
-    }
+        System.out.println(parser[0]+parser[1]);*/
+
+
     public static void main(String[] args) {
-        loadDataFromJson();
+        MainPage Test = new MainPage();
+        Test.loadDataFromJson("Supermarkt.json");
+
+
+
+        Test.getKeyFromJson(Test.getJSONstring());
+        Test.getsubKeyFromJson(Test.getJSONstring(), "Lebensmittel");
+        Test.getPriceFromsubKeys(Test.getJSONstring(), "Lebensmittel");
     }
-
-
-
 
 }
+
+
+
