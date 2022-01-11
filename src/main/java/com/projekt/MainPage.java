@@ -33,6 +33,9 @@ public class MainPage {
     public String[] getPrice() {
         return price;
     }
+    public static int getSubKeyCount() {
+        return subKeyCount;
+    }
 
     public void loadDataFromJson(String FileName) {
         StringBuilder string = new StringBuilder();
@@ -102,11 +105,9 @@ public class MainPage {
         Test.loadDataFromJson("Supermarkt.json");
 
 
-
         Test.getKeyFromJson(Test.getJSONstring());
         Test.getsubKeyFromJson(Test.getJSONstring(), "Lebensmittel");
         Test.getPriceFromsubKeys(Test.getJSONstring(), "Lebensmittel");
-
     }
 
 }
