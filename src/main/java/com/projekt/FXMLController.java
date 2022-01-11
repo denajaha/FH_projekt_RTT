@@ -54,6 +54,9 @@ public class FXMLController implements Initializable {
     public TextField totalAmount;
     public Button cashPaymentPayButton;
 
+    // cardPage
+    public Button doneButton;
+
     //Usermanagement
     @FXML
     public TableView <User> tableusermgmt;

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projekt.FXMLController">
    <children>
       <Text layoutX="300.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thank you for your purchase!" textAlignment="CENTER" />
+      <Button fx:id="doneButton" layoutX="300.0" layoutY="321.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="155.0" text="Done" onAction="#backToMainPageButtonClicked" />
    </children>
 </AnchorPane>
