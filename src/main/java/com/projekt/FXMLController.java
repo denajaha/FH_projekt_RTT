@@ -208,8 +208,6 @@ public class FXMLController implements Initializable {
 
     }
 
-
-
     // Main Page Methods
     public void userChangeButtonClicked(ActionEvent actionEvent) {
         Parent root;
