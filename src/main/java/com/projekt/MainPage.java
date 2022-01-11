@@ -107,7 +107,6 @@ public class MainPage {
         Test.getsubKeyFromJson(Test.getJSONstring(), "Lebensmittel");
         Test.getPriceFromsubKeys(Test.getJSONstring(), "Lebensmittel");
 
-
     }
 
 }
