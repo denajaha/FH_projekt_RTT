@@ -70,15 +70,14 @@ public class MainPage {
     }
 
     public void getPriceFromsubKeys (String JSONstring, String Key){
-
+        int pricecount = 0;
         JSONObject jsonObj = new org.json.JSONObject(JSONstring);
         JSONArray jsonArr = jsonObj.getJSONArray(Key);
-        //JSONObject jsonObs = jsonArr.getJSONObject(subKeyCount);
+        JSONObject jsonObs = jsonArr.getJSONObject(pricecount);
 
-        for(int i=0; i<1; i++){
-            JSONObject jsonOb = jsonArr.getJSONObject(i);
-            this.price[i] = jsonOb.getString(this.subKey[i]);
-            //this.key[0] = jsonOb.getString("Konserven");
+        for(int i=0; i < subKeyCount; i++ ){
+            this.price[pricecount] = jsonObs.getString(this.subKey[pricecount]);
+            pricecount ++;
         }
     }
 
@@ -107,6 +106,8 @@ public class MainPage {
         Test.getKeyFromJson(Test.getJSONstring());
         Test.getsubKeyFromJson(Test.getJSONstring(), "Lebensmittel");
         Test.getPriceFromsubKeys(Test.getJSONstring(), "Lebensmittel");
+
+
     }
 
 }
