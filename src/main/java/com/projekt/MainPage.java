@@ -5,6 +5,8 @@ import org.json.JSONObject;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -24,6 +26,7 @@ public class MainPage {
     public String getJSONstring() {
         return JSONstring;
     }
+
     public String[] getKey() {
         return key;
     }
@@ -84,21 +87,18 @@ public class MainPage {
         }
     }
 
-    @Override
-    public String toString() {
-        return "Subkey: " + this.price[3];
-    }
-    //float[] parser = new float[100];
 
-    // muss verbessert werden um die Preise von Strings in Floating Zahlen umzuwandeln
-        /*for(int i =0; i<5;i++) {
-            parser[i] = Float.parseFloat(price[i]);
-            System.out.print(Test[i]);
-            System.out.print(" ");
-            System.out.println(parser[i]);
+    public ArrayList print() {
+        ArrayList<String> value = new ArrayList<String>();
+
+        for (int i = 0; i < KeyCount; i++){
+            value.add(this.key[i]);
+            System.out.println(i+1 + " " + value.get(i));
         }
-        System.out.println(parser[0]+parser[1]);*/
 
+
+        return value;
+    }
 
     public static void main(String[] args) {
         MainPage Test = new MainPage();
