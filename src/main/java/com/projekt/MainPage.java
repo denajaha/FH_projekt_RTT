@@ -88,11 +88,23 @@ public class MainPage {
     }
 
 
-    public ArrayList print() {
+    public ArrayList printKey() {
         ArrayList<String> value = new ArrayList<String>();
 
         for (int i = 0; i < KeyCount; i++){
             value.add(this.key[i]);
+            System.out.println(i+1 + " " + value.get(i));
+        }
+
+
+        return value;
+    }
+
+    public ArrayList printSubKey(){
+        ArrayList<String> value = new ArrayList<String>();
+
+        for (int i = 0; i < subKeyCount; i++){
+            value.add(this.subKey[i]);
             System.out.println(i+1 + " " + value.get(i));
         }
 
