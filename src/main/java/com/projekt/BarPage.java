@@ -1,39 +1,43 @@
 package com.projekt;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.time.Period;
+import java.util.*;
+import java.util.logging.Handler;
 
 public class BarPage {
 
+    private final ArrayList<String> listofchoosenitems = new ArrayList<String>();
+    private final ArrayList<String> order = new ArrayList<String>();
+    private final ArrayList<Integer> orderamount = new ArrayList<Integer>();
+
+
+    public ArrayList<String> getlistofchoosenitems() { return listofchoosenitems;}
+    public ArrayList<String> getOrder() { return order; }
+    public ArrayList<Integer> getOrderamount() { return orderamount; }
+
     public BarPage() {}
-    MainPage mainPage = new MainPage();
-     //String[] listeDerGewähltenItems = new Arrays.toString(mainPage.getSubKey()); //Hier sollen alle Items die geklickt wurden eingefügt werden
 
+    public void orderlist(ArrayList<String> list) {
+        // We need to creat a Map to load our list inside to double check how often an Item is in our List
+        Map<String, Integer> mp = new TreeMap<>();
 
-    public void order(Object order) {
-
-        int anzahl = 0;
-        System.out.println(order);
-        ArrayList<String> listeDerGewaehltenItems = new ArrayList<String>();
-        listeDerGewaehltenItems.add(String.valueOf(order));
-        if (listeDerGewaehltenItems == order) {
-            anzahl += 1;
+        // Loop to get our Subkeys from our list
+        for (int i = 0; i < listofchoosenitems.size(); i++) {
+            // Checking if our Subkey is in our list and adding how often it was found
+            if(mp.containsKey((list.get(i)))){
+                mp.put(list.get(i), mp.get(list.get(i))+1);
+            }
+            else mp.put(list.get(i),1);
         }
-        else {
-            listeDerGewaehltenItems.add(String.valueOf(order));
+
+        // Loop to get our Values and Keys in our Public list to get excess
+        for(Map.Entry<String, Integer> entry: mp.entrySet()){
+            order.add(entry.getKey());
+            orderamount.add(entry.getValue());
         }
-        System.out.println(anzahl + " x " + mainPage.printSubKey() + " " + mainPage.getPrice());
-
-
-        //int anzahl = 7;
-        //for (int i = 0; i < 7; i++) {//7 ist hier nur provisorisch und soll die "listeDerGewähltenItems" als zahl ausgeben
-        //    //listeDerGewähltenItems = Arrays.toString(mainPage.getSubKey()); //Vielleicht für die +/- Buttons?
-        //    System.out.println(anzahl + " x " + Arrays.toString(mainPage.getSubKey()) + " " + Arrays.toString(mainPage.getPrice()));//7 ist nur eine provisorische Anzahl von wie oft man das jeweilige item wollte
-        //    System.out.println(); //Um immer einen Abstand zwischen den Zeilen zu lassen
-        //}
-
     }
+
+
 /*
     public void deleteItem(mainPage.getKey<mainPage.getSubKey()> listeDerGewähltenItems) { //Hier habe ich Von den Überkathegorien den Unterkathegorien dies Liste der gewählten Items eingegrenzt
         System.out.println("Wählen Sie das gewählte Produkt, welches Sie entfernen wollen: ");
@@ -74,11 +78,9 @@ public class BarPage {
 
     public void total(String[] price) {
         float gesammt = 0;
-
         for (int i = 0; i < 7; i++) {
             gesammt += Float.parseFloat(price[i]);
         }
-
         System.out.print("Der Gesammtpreis beträgt: ");
         System.out.print(gesammt);
 
@@ -94,6 +96,7 @@ public class BarPage {
         int choice = 0;
         ArrayList<String> keys;
         ArrayList<String> subkeys;
+        ArrayList<Integer> test = new ArrayList<Integer>();
         int x = 0;
 
         main.loadDataFromJson("Supermarkt.json");
@@ -102,52 +105,42 @@ public class BarPage {
 
 
         //main.getKeyFromJson(main.getJSONstring());
-       // main.getsubKeyFromJson(main.getJSONstring(), "Lebensmittel");
+        // main.getsubKeyFromJson(main.getJSONstring(), "Lebensmittel");
         //main.getPriceFromsubKeys(main.getJSONstring(), "Lebensmittel");
         //s = main.getPrice();
-        System.out.println("Wähle die Kathegorie 0 bis 10: ");
-        keys = main.printKey();
+        System.out.println("Wähle die Kathegorie 1 bis 11: ");
+        main.printMainKey();
+        keys = main.getMainKey();
         System.out.print("Auswahl: ");
         choice = scanner.nextInt();
 
+        choice -= 1;
 
         switch (choice) {
             case 0:
                 main.getsubKeyFromJson(main.getJSONstring(), keys.get(0));
                 System.out.println();
-                subkeys = main.printSubKey();
-                do {
+                main.printSubKey();
+                subkeys = main.getSubKey();
+                for (int i = 0; i < 5; i++) {
                     System.out.print("Auswahl: ");
                     x = scanner.nextInt();
-                    bar.order(subkeys.get(x));
-                } while (x != 666);
-            case 1:
-                main.getsubKeyFromJson(main.getJSONstring(), keys.get(1));
+                    x -= 1;
+                    bar.listofchoosenitems.add(subkeys.get(x));
+                }
+                bar.orderlist(bar.listofchoosenitems);
+                for (int i = 0; i < bar.order.size(); i++) {
+                    System.out.println(bar.orderamount.get(i)+"x "+bar.order.get(i));
+                }
                 System.out.println();
-                subkeys = main.printSubKey();
-                do {
-                    System.out.print("Auswahl: ");
-                    x = scanner.nextInt();
-                    bar.order(subkeys.get(x));
-                } while (x != 666);
-            case 2:
-                main.getsubKeyFromJson(main.getJSONstring(), keys.get(2));
-                System.out.println();
-                subkeys = main.printSubKey();
-                do {
-                    System.out.print("Auswahl: ");
-                    x = scanner.nextInt();
-                    bar.order(subkeys.get(x));
-                } while (x != 666);
+                break;
+
             default:
                 System.out.println("Auswahl nicht verfügbar.");
-
-
-
+                break;
 
         }
 
-        //bar.total(s);
 
     }
 }
