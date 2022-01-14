@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="545.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projekt.FXMLController">
+<AnchorPane prefHeight="545.0" prefWidth="747.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projekt.FXMLController">
    <children>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -17,16 +24,76 @@
       <Text fx:id="userRole" layoutX="164.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="userRolePlatzhalter" wrappingWidth="133.13671875" />
       <ScrollPane layoutX="23.0" layoutY="195.0" prefHeight="299.0" prefWidth="480.0" />
       <Text layoutX="528.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Calculator" wrappingWidth="82.13671875" />
-      <TextField fx:id="returnAmount" layoutX="528.0" layoutY="454.0" prefHeight="25.0" prefWidth="197.0" />
-      <Text layoutX="528.0" layoutY="439.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Return" wrappingWidth="82.13671875" />
-      <ScrollPane layoutX="528.0" layoutY="194.0" prefHeight="223.0" prefWidth="197.0" />
-      <Text layoutX="23.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Products" wrappingWidth="82.13671875" />
-      <Text layoutX="528.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Money given" wrappingWidth="82.13671875" />
-      <Text layoutX="528.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Money tipped" wrappingWidth="82.13671875" />
-      <TextField fx:id="money_given" layoutX="528.0" layoutY="66.0" prefHeight="25.0" prefWidth="143.0" text="Money given" />
-      <TextField fx:id="money_tipped" layoutX="528.0" layoutY="132.0" prefHeight="25.0" prefWidth="143.0" text="Money tipped" />
-      <TextField fx:id="totalAmount" layoutX="354.0" layoutY="506.0" />
-      <Text layoutX="256.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total" wrappingWidth="82.13671875" />
+      <TextField fx:id="returnAmount" editable="false" layoutX="528.0" layoutY="454.0" prefHeight="25.0" prefWidth="197.0" />
+      <Text layoutX="529.0" layoutY="441.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Return" wrappingWidth="82.13671875" />
+      <Text layoutX="24.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Products" wrappingWidth="82.13671875" />
+      <Text layoutX="529.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Money given (custom)" wrappingWidth="133.13671875" />
+      <Text layoutX="529.0" layoutY="119.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Money tipped" wrappingWidth="82.13671875" />
+      <TextField fx:id="money_given" layoutX="528.0" layoutY="66.0" prefHeight="25.0" prefWidth="143.0" promptText="Money given" />
+      <TextField fx:id="money_tipped" layoutX="528.0" layoutY="132.0" prefHeight="25.0" prefWidth="143.0" promptText="Money tipped" />
+      <TextField fx:id="totalAmount" editable="false" layoutX="354.0" layoutY="506.0" />
+      <Text layoutX="314.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total" wrappingWidth="82.13671875" />
       <Button fx:id="cashPaymentButton" layoutX="636.0" layoutY="506.0" mnemonicParsing="false" onAction="#cardPaymentButtonClicked" prefHeight="25.0" prefWidth="89.0" text="Pay" />
+      <GridPane layoutX="530.0" layoutY="194.0" prefHeight="226.0" prefWidth="197.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button alignment="CENTER" maxWidth="56.0" minWidth="55.0" mnemonicParsing="false" text="200€">
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </GridPane.margin>
+            </Button>
+            <Button alignment="CENTER" mnemonicParsing="false" text="100€" GridPane.columnIndex="1">
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </GridPane.margin>
+            </Button>
+            <Button alignment="CENTER" minWidth="56.0" mnemonicParsing="false" text="50€" GridPane.rowIndex="1">
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </GridPane.margin>
+            </Button>
+            <Button alignment="CENTER" minWidth="56.0" mnemonicParsing="false" text="20€" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </GridPane.margin>
+            </Button>
+            <Button alignment="CENTER" minWidth="56.0" mnemonicParsing="false" text="20€" GridPane.rowIndex="2">
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </GridPane.margin>
+            </Button>
+            <Button alignment="CENTER" minWidth="56.0" mnemonicParsing="false" text="20€" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <padding>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+               </GridPane.margin>
+            </Button>
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>
