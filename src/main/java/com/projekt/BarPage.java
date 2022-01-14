@@ -6,6 +6,7 @@ import java.util.logging.Handler;
 
 public class BarPage {
 
+    MainPage main = new MainPage();
     private final ArrayList<String> listofchoosenitems = new ArrayList<String>();
     private final ArrayList<String> order = new ArrayList<String>();
     private final ArrayList<Integer> orderamount = new ArrayList<Integer>();
@@ -19,7 +20,7 @@ public class BarPage {
 
     public void orderlist(ArrayList<String> list) {
         // We need to creat a Map to load our list inside to double check how often an Item is in our List
-        Map<String, Integer> mp = new TreeMap<>();
+        Map<String, Integer> mp = new TreeMap<>();//???
 
         // Loop to get our Subkeys from our list
         for (int i = 0; i < listofchoosenitems.size(); i++) {
@@ -38,32 +39,32 @@ public class BarPage {
     }
 
 
-/*
-    public void deleteItem(mainPage.getKey<mainPage.getSubKey()> listeDerGewähltenItems) { //Hier habe ich Von den Überkathegorien den Unterkathegorien dies Liste der gewählten Items eingegrenzt
+
+    public void deleteItem(ArrayList<String> array) {
         System.out.println("Wählen Sie das gewählte Produkt, welches Sie entfernen wollen: ");
         Scanner loeschen = new Scanner(System.in);
-        String item = loeschen.nextLine();
-        for (int i = 0; i < listeDerGewähltenItems.size(); i++) {
-            getsubKeyFromJson item = listeDerGewähltenItems.get(i);
-            if (item.loeschen == loeschen) { //Wenn das eingegebene auch existiert dann lösche eines
-                listeDerGewähltenItems.remove(i);
+        String ID = loeschen.nextLine();
+        for (int i = 0; i < listofchoosenitems.size(); i++) {
+            main.getsubKeyFromJson() item = listofchoosenitems.get(i);
+            if (item.ID == ID) { //Wenn das eingegebene auch existiert dann lösche eines
+                listofchoosenitems.remove(i);
                 System.out.println("Gelöscht");
-                anzahl --;//die provisorische anzahl von order
+                orderamount --;//die provisorische anzahl von order
                 return;
             }
         }
     }
 
-    public void addItem(getKeyFromJson<getsubKeyFromJson> listeDerGewähltenItems) {
+    public void addItem(ArrayList<String> array) {
         System.out.println("Wählen Sie das gewählte Produkt, welches Sie hinzufügen wollen: ");
         Scanner hinzufuegen = new Scanner(System.in);
         String item = hinzufuegen.nextLine();
-        for (int i = 0; i < listeDerGewähltenItems.size(); i++) {
-            getsubKeyFromJson item = listeDerGewähltenItems.get(i);
-            if (item.hinzufuegen == hinzufuegen) {
-                listeDerGewähltenItems.add(i);
+        for (int i = 0; i < listofchoosenitems.size(); i++) {
+            main.getsubKeyFromJson() item = listofchoosenitems.get(i);
+            if (item. == hinzufuegen) {
+                listofchoosenitems.add(i);
                 System.out.println("Hinzugefügt");
-                anzahl ++; //wieder anzahl von order
+                orderamount ++; //wieder anzahl von order
                 return;
             }
 
@@ -74,12 +75,12 @@ public class BarPage {
 
     }
 
- */
 
-    public void total(String[] price) {
+
+    public void total(float[] price) {
         float gesammt = 0;
-        for (int i = 0; i < 7; i++) {
-            gesammt += Float.parseFloat(price[i]);
+        for (int i = 0; i < listofchoosenitems.size(); i++) {
+            gesammt = gesammt + (orderamount.get() * main.getPrice());//Float.parseFloat(String.valueOf(price[i])) );//gesammt = gesammt + (anzahl des Produkts * preis des Produkts)
         }
         System.out.print("Der Gesammtpreis beträgt: ");
         System.out.print(gesammt);
@@ -126,11 +127,11 @@ public class BarPage {
                     System.out.print("Auswahl: ");
                     x = scanner.nextInt();
                     x -= 1;
-                    bar.listofchoosenitems.add(subkeys.get(x));
+                    bar.listofchoosenitems.add(subkeys.get(x));//??? hier fügst du das gewählte der liste hinzu
                 }
                 bar.orderlist(bar.listofchoosenitems);
                 for (int i = 0; i < bar.order.size(); i++) {
-                    System.out.println(bar.orderamount.get(i)+"x "+bar.order.get(i));
+                    System.out.println(bar.orderamount.get(i)+"x "+bar.order.get(i));//??? fehlt doch noch preis oder?
                 }
                 System.out.println();
                 break;
