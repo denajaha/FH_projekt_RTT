@@ -52,6 +52,10 @@ public class FXMLController implements Initializable {
     public TextField money_given;
     public TextField money_tipped;
     public TextField totalAmount;
+    public Button cashPaymentPayButton;
+
+    // cardPage
+    public Button doneButton;
 
     //Usermanagement
     @FXML
@@ -66,6 +70,7 @@ public class FXMLController implements Initializable {
     public TextField roleusermgmt1;
     public TextField passwordusermgmt1;
     public TextField usernameusermgmt1;
+    public Button goBack;
     @FXML
     public TableColumn <User,String> firstname;
     @FXML
@@ -73,8 +78,6 @@ public class FXMLController implements Initializable {
     @FXML
     public TableColumn <User,String> role;
     private User loadedUser;
-    @FXML
-    private Label label;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -94,7 +97,7 @@ public class FXMLController implements Initializable {
             try {
                 root = FXMLLoader.load(getClass().getClassLoader().getResource("mainPage.fxml"));
                 Stage stage = new Stage();
-                stage.setTitle("RTT KASSENAPP");
+                stage.setTitle("RTT Cash Register");
                 stage.setScene(new Scene(root, 750, 550));
                 stage.show();
                 // Hide this current window (if this is what you want)
@@ -119,7 +122,7 @@ public class FXMLController implements Initializable {
 
     }
 
-    //UsermanagementMethod
+    //Usermanagement Methods
     public void loadUser(ActionEvent actionEvent) {
         ObservableList<User> data = FXCollections.<User>observableArrayList();
         data.addAll(User.getUsers());
@@ -156,16 +159,18 @@ public class FXMLController implements Initializable {
                 }
         }
 
-        User.updateUserDatabase();
-        User.loadDataFromJson();
+        //User.updateUserDatabase();
+        //User.loadDataFromJson();
 
-        ObservableList<User> data = FXCollections.<User>observableArrayList();
-        data.addAll(User.getUsers());
+        ObservableList<User> peter = FXCollections.<User>observableArrayList();
+        peter.addAll(User.getUsers());
+        //System.out.println(peter.toString());
         firstname.setCellValueFactory(new PropertyValueFactory<User, String>("firstname"));
         surname.setCellValueFactory(new PropertyValueFactory<User, String>("surname"));
         role.setCellValueFactory(new PropertyValueFactory<User, String>("role"));
-        tableusermgmt.setItems(data);
-
+        tableusermgmt.setItems(peter);
+        tableusermgmt.getColumns().get(0).setVisible(false);
+        tableusermgmt.getColumns().get(0).setVisible(true);
 
     }
 
@@ -203,11 +208,19 @@ public class FXMLController implements Initializable {
 
     }
 
-
-
     // Main Page Methods
     public void userChangeButtonClicked(ActionEvent actionEvent) {
-
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("welcome.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root, 300, 275));
+            stage.show();
+            // Hide this current window (if this is what you want)
+            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void settingsButtonClicked(ActionEvent actionEvent) {
@@ -215,27 +228,59 @@ public class FXMLController implements Initializable {
         try {
                 root = FXMLLoader.load(getClass().getClassLoader().getResource("settings.fxml"));
                 Stage stage = new Stage();
-                stage.setTitle("RTT KASSENAPP");
+                stage.setTitle("Settings");
                 stage.setScene(new Scene(root, 750, 550));
                 stage.show();
                 // Hide this current window (if this is what you want)
-                ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+                //((Node) (actionEvent.getSource())).getScene().getWindow().hide();
             } catch (IOException e) {
                 e.printStackTrace();
             }
     }
 
     public void cashPaymentButtonClicked(ActionEvent actionEvent) {
-
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("barPage.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("View your Order");
+            stage.setScene(new Scene(root, 750, 550));
+            stage.show();
+            // Hide this current window (if this is what you want)
+            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void cardPaymentButtonClicked(ActionEvent actionEvent) {
-
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("cardPage.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("Goodbye!");
+            stage.setScene(new Scene(root, 750, 550));
+            stage.show();
+            // Hide this current window (if this is what you want)
+            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // Settings Page Methods
     public void backToMainPageButtonClicked(ActionEvent actionEvent) {
-
+        Parent root;
+        try {
+        root= FXMLLoader.load(getClass().getClassLoader().getResource("mainPage.fxml"));
+        Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setTitle("RTT Cash Register");
+        Scene scene = new Scene(root, 750, 550);
+        stage.setScene(scene);
+        stage.show();
+        } catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     public void userSettingOpen(ActionEvent actionEvent) {
@@ -243,7 +288,7 @@ public class FXMLController implements Initializable {
             try {
                 root = FXMLLoader.load(getClass().getClassLoader().getResource("UserManagement.fxml"));
                 Stage stage = new Stage();
-                stage.setTitle("RTT KASSENAPP");
+                stage.setTitle("User Settings");
                 stage.setScene(new Scene(root, 750, 550));
                 stage.show();
                 // Hide this current window (if this is what you want)

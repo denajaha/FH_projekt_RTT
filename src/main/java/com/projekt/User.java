@@ -32,7 +32,7 @@ public class User {
 
         users++;
         if(newUser==true){
-            this.userid = (int)(Math.random()*(2147483646-200000000)+200000000);
+            this.userid = (int)(Math.random()*(2147483646-2000000000)+2000000000);
         }else{
             this.userid=userid;
         }
@@ -57,7 +57,6 @@ public class User {
         }
 
         userlist.add(this);
-        updateUserDatabase();
     }
 
     //Methode zum erstellen eines neuen Users
@@ -122,19 +121,16 @@ public class User {
     public void setFirstname(String firstname) {
         int index=-1;
         for(int i=0; i<userlist.size();i++){
-            if(userlist.get(i).getFirstname().equals(this.firstname)){
-                if(userlist.get(i).getFirstname().equals(this.firstname)
-                        && userlist.get(i).getSurname().equals(this.surname)
-                        && userlist.get(i).getUsername().equals(this.username)
-                        && userlist.get(i).getPassword().equals(this.password)
-                        && userlist.get(i).getRole().equals(this.role)){
+            if(userlist.get(i).equals(this)){
+
                     index=i;
                     break;
-                }
             }
         }
         this.firstname = firstname;
         userlist.get(index).firstname = firstname;
+        updateUserDatabase();
+        //System.out.println(userlist.size());
     }
 
     //Setter für Familienname
@@ -157,6 +153,7 @@ public class User {
         }
         userlist.get(index).surname = surname;
         this.surname = surname;
+        updateUserDatabase();
     }
 
     //Setter für Username
@@ -265,6 +262,7 @@ public class User {
                 System.out.println("Userdata not integer -- User not loaded from DB");
             }
         }
+        System.out.println("Userdbloaded with "+ userl.size());
         userlist = userl;
     }
 
@@ -320,7 +318,6 @@ public class User {
     //Aktuell geladene Liste in Datenbank (JSONFILE abspeichern)
     // Methode einfach aufrufen
     protected static void updateUserDatabase(){
-        //Nur ein Versuch
         JSONArray jsonArray = new JSONArray();
         for(int i=0; i<userlist.size(); i++){
             JSONObject jsonobject = new JSONObject();
@@ -344,6 +341,8 @@ public class User {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        System.out.println("Userdbupdated with "+ userlist.size());
     }
 
     //Wird benötigt für login
