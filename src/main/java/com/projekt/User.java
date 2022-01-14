@@ -29,7 +29,7 @@ public class User {
 
         users++;
         if(newUser==true){
-            this.userid = (int)(Math.random()*(2147483646-200000000)+200000000);
+            this.userid = (int)(Math.random()*(2147483646-2000000000)+2000000000);
         }else{
             this.userid=userid;
         }
@@ -54,7 +54,6 @@ public class User {
         }
 
         userlist.add(this);
-        updateUserDatabase();
     }
 
     public static User createNewUser(String firstname, String surname, String username, String password, String role){
@@ -101,19 +100,16 @@ public class User {
     public void setFirstname(String firstname) {
         int index=-1;
         for(int i=0; i<userlist.size();i++){
-            if(userlist.get(i).getFirstname().equals(this.firstname)){
-                if(userlist.get(i).getFirstname().equals(this.firstname)
-                        && userlist.get(i).getSurname().equals(this.surname)
-                        && userlist.get(i).getUsername().equals(this.username)
-                        && userlist.get(i).getPassword().equals(this.password)
-                        && userlist.get(i).getRole().equals(this.role)){
+            if(userlist.get(i).equals(this)){
+
                     index=i;
                     break;
-                }
             }
         }
         this.firstname = firstname;
         userlist.get(index).firstname = firstname;
+        updateUserDatabase();
+        //System.out.println(userlist.size());
     }
 
     public void setSurname(String surname) {
@@ -132,6 +128,7 @@ public class User {
         }
         userlist.get(index).surname = surname;
         this.surname = surname;
+        updateUserDatabase();
     }
 
     public void setUsername(String username) {
@@ -225,6 +222,7 @@ public class User {
                 System.out.println("Userdata not integer -- User not loaded from DB");
             }
         }
+        System.out.println("Userdbloaded with "+ userl.size());
         userlist = userl;
     }
 
@@ -269,7 +267,6 @@ public class User {
     }
 
     protected static void updateUserDatabase(){
-        //Nur ein Versuch
         JSONArray jsonArray = new JSONArray();
         for(int i=0; i<userlist.size(); i++){
             JSONObject jsonobject = new JSONObject();
@@ -293,6 +290,8 @@ public class User {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        System.out.println("Userdbupdated with "+ userlist.size());
     }
 
     public static final User getUserCredentials(String username, String password){
