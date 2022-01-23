@@ -4,14 +4,14 @@ import java.util.*;
 public class BarPage {
 
     // Variable declaration
-    private final ArrayList<String> listofallselecteditems = new ArrayList<>();
-    private final Map<String, Float> finalorder = new TreeMap<>();
-    private final ArrayList<Integer> clicks = new ArrayList<>();
-    private final ArrayList<String> items = new ArrayList<>();
-    private final ArrayList<Float> price = new ArrayList<>();
-    private final Map<String, Integer> mp = new TreeMap<>();
+    protected final ArrayList<String> listofallselecteditems = new ArrayList<>();
+    protected final Map<String, Float> finalorder = new TreeMap<>();
+    protected final ArrayList<Integer> clicks = new ArrayList<>();
+    protected final ArrayList<String> items = new ArrayList<>();
+    protected final ArrayList<Float> price = new ArrayList<>();
+    protected final Map<String, Integer> mp = new TreeMap<>();
 
-    private float total = 0;
+    protected float total = 0;
 
     /* Methods to be able to get the values Clicks/Total/finalorder etc --> They are Arraylist/Maps.
        Implement ArrayLists<String> or Map<String, Integer>

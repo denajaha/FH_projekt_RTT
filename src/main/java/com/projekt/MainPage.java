@@ -145,6 +145,7 @@ public class MainPage {
     }
 
     public static void main(String[] args) {
+
         MainPage Main = new MainPage();
         ArrayList<String> Key;
 
@@ -163,6 +164,8 @@ public class MainPage {
         Main.getPriceFromsubKeys(Key.get(0));
         //Price = Main.getPrice();
         Main.printSubkeywithPrice();
+
+
 
 
 
