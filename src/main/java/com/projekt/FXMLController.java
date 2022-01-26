@@ -346,9 +346,11 @@ public class FXMLController implements Initializable {
         Parent root;
         try {
             root = FXMLLoader.load(getClass().getClassLoader().getResource("settings.fxml"));
-            Stage stage = new Stage();
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setTitle("Settings");
-            stage.setScene(new Scene(root, 750, 550));
+            Scene scene = new Scene(root, 750, 550);
+            stage.close();
+            stage.setScene(scene);
             stage.show();
             // Hide this current window (if this is what you want)
             //((Node) (actionEvent.getSource())).getScene().getWindow().hide();
@@ -421,6 +423,7 @@ public class FXMLController implements Initializable {
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setTitle("RTT Cash Register");
             Scene scene = new Scene(root, 1100, 546);
+            stage.close();
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
