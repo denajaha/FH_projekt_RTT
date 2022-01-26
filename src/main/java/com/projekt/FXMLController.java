@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.application.Platform;
@@ -26,6 +27,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
+
+import static javafx.scene.input.KeyEvent.*;
 
 public class FXMLController implements Initializable {
 
@@ -135,6 +138,39 @@ public class FXMLController implements Initializable {
                 primaryStage.show();
             }catch (IOException e) {
             e.printStackTrace();
+            }
+        }
+    }
+
+    public void buttonPressed(KeyEvent c)
+    {
+        if(c.getCode().toString().equals("ENTER"))
+        {
+            if (User.checkCredentials(usernameInput.getText(), passwordInput.getText())) {
+                Parent root;
+                try {
+                    root = FXMLLoader.load(getClass().getClassLoader().getResource("mainPage.fxml"));
+                    Stage stage = new Stage();
+                    stage.setTitle("RTT Cash Register");
+                    stage.setScene(new Scene(root, 1100, 550));
+                    stage.show();
+                    // Hide this current window (if this is what you want)
+                    //((Node) (KeyEvent.getSource())).getScene().getWindow().hide();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                Session session = new Session(User.getUserCredentials(usernameInput.getText(), passwordInput.getText()));
+                App.setSession(session);
+            } else {
+                try {
+                    Parent popup = FXMLLoader.load(getClass().getClassLoader().getResource("errorLogin.fxml"));
+                    Stage primaryStage = new Stage();
+                    primaryStage.setTitle("Passwort Falsch");
+                    primaryStage.setScene(new Scene(popup, 200, 150));
+                    primaryStage.show();
+                }catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
