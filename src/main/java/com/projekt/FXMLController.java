@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import com.sun.javafx.scene.control.LabeledImpl;
@@ -58,7 +59,6 @@ public class FXMLController implements Initializable {
     public ScrollPane order;
 
     // barPage
-    public TextField returnAmount;
 
     public Button cashPaymentPayButton;
 
@@ -105,6 +105,16 @@ public class FXMLController implements Initializable {
     public TextField moneyGiven;
     @FXML
     public TextField moneyTipped;
+    public Button button200;
+    public TextField returnAmount;
+    public Button button100;
+    public Button button50;
+    public Button button20;
+    public Button button10;
+    public Button button5;
+    public Button cleanAllButton;
+    public Button removeITem;
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -114,6 +124,10 @@ public class FXMLController implements Initializable {
     public FXMLController() {
 
     }
+
+
+    //alert object for the following button methods
+    Alert alert = new Alert(Alert.AlertType.WARNING);
 
     // Welcome Page Methods
     public void loginButtonClicked(ActionEvent actionEvent) {
@@ -333,7 +347,7 @@ public class FXMLController implements Initializable {
         try {
             root = FXMLLoader.load(getClass().getClassLoader().getResource("welcome.fxml"));
             Stage stage = new Stage();
-            stage.setScene(new Scene(root, 300, 275));
+            stage.setScene(new Scene(root, 400, 350));
             stage.show();
             // Hide this current window (if this is what you want)
             ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
@@ -352,39 +366,14 @@ public class FXMLController implements Initializable {
             stage.close();
             stage.setScene(scene);
             stage.show();
-            // Hide this current window (if this is what you want)
-            //((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+            // Hide this current window
+            ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
 
-
-    /*
-        public void cashPaymentButtonClicked(ActionEvent actionEvent) {
-            Parent root;
-            try {
-                root = FXMLLoader.load(getClass().getClassLoader().getResource("barPage.fxml"));
-                Stage stage = new Stage();
-                stage.setTitle("View your Order");
-                stage.setScene(new Scene(root, 750, 550));
-                stage.show();
-                // Hide this current window (if this is what you want)
-                ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-
-                //ArrayList<String> arrayListOfSubkeysInBarPage = clickedSubKeyInProducts;
-                System.out.println("New list:" + clickedSubKeyInProducts);
-                listViewProducts2.getItems().addAll(clickedSubKeyInProducts);
-
-
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-     */
     public void cashPaymentButtonClicked(ActionEvent actionEvent) {
         int moneyGivenVar = Integer.parseInt(moneyGiven.getText());
         int moneyTippedVar = Integer.parseInt(moneyTipped.getText());
@@ -422,8 +411,10 @@ public class FXMLController implements Initializable {
             root = FXMLLoader.load(getClass().getClassLoader().getResource("mainPage.fxml"));
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setTitle("RTT Cash Register");
+
             Scene scene = new Scene(root, 1100, 546);
             stage.close();
+
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
@@ -447,6 +438,7 @@ public class FXMLController implements Initializable {
             e.printStackTrace();
         }
     }
+
 
     public void backToSettingsPageButtonClicked(ActionEvent actionEvent) {
         Parent root;
@@ -517,8 +509,11 @@ public class FXMLController implements Initializable {
 
 
     ArrayList<String> clickedSubKeyInProducts = new ArrayList<>();
+
+    //sum variable -> used in several methods!!!
     int sum = 0;
-    String sum2 = String.valueOf(sum);
+
+
     //Add Button
     //Adds Subkeys to order list
     public void addInOrderClicked() {
@@ -526,46 +521,33 @@ public class FXMLController implements Initializable {
         MainPage mainPage = new MainPage();
         BarPage barPage = new BarPage();
 
-        /*
-        -------------------------------------------------------------------------------------------
-         */
+/*
+-------------------------------------------------------------------------------------------
 
+-------------------------------------------------------------------------------------------
+*/
+    listViewSubKeys.getSelectionModel().getSelectedItem().toString();
+    String subKeyForOrder = getSubKey(listViewSubKeys.getSelectionModel().getSelectedItem().toString());
 
-        listViewSubKeys.getSelectionModel().getSelectedItem().toString();
-        System.out.println("test.......!!!!!!!" + listViewSubKeys.getSelectionModel().getSelectedItem().toString() );
-        String subKeyForOrder = getSubKey(listViewSubKeys.getSelectionModel().getSelectedItem().toString());
-
-        listViewOrder.getItems().add(subKeyForOrder);
-
-
+    listViewOrder.getItems().add(subKeyForOrder);
 
 
 
-        String selectedSubkey = listViewSubKeys.getSelectionModel().getSelectedItem().toString();
-        // clickedSubKeyInProducts.add(selectedSubkey);
+    //------------------------------------------------------
+    //DA LI NAM TREBA OVO?
+    //slectedSubKey se ne koristi nigde! (Siv je)
+    //------------------------------------------------------
+    String selectedSubkey = listViewSubKeys.getSelectionModel().getSelectedItem().toString();
+    clickedSubKeyInProducts.add(selectedSubkey);
 
-        System.out.println("Selected subkey: " + selectedSubkey);
-        System.out.println("subkeyforOrder" + subKeyForOrder);
-        System.out.println("Lista: " + clickedSubKeyInProducts.toString());
 
 /*
+-------------------------------------------------------------------------------------------
+
 -------------------------------------------------------------------------------------------
  */
 
 
-/*
-        ArrayList<String> listSubsCLEAN = getListOfSubKeys();       //we need clean list os subkeys and not filtered list in "Order" ( because we want to extract price from original list in JSON file
-        int indexOfSubKey = listSubsCLEAN.indexOf(subKeyForOrder);
-
-        String subKeyIndexString = listSubsCLEAN.get(indexOfSubKey);
-        mainPage.getPriceFromsubKeys(subKeyIndexString);
-        System.out.println("-----------------------------");
-        ArrayList<String> prices;
-        prices = mainPage.getPrice();
-        System.out.println(prices);
-        System.out.println("-----------------------------");
-
-*/
         // Variables to help us to choice between MainKey and SubKey
         int ChoiceMainKey;
         int ChoiceSubKey;
@@ -612,13 +594,12 @@ public class FXMLController implements Initializable {
         for (int i = 0; i < barPage.listofallselecteditems.size(); i++) {
             sum += Integer.parseInt(price.get(indexOfSubKey));
         }
-        barPage.total();
 
+        barPage.total();
         barPage.printorder();
 
         System.out.println("Total: " + sum + "€");
 
-        //return sum;
         //Display sum in textfield totalAmount when button is pressed
         totalAmount.setText(String.valueOf(sum));
 
@@ -627,10 +608,12 @@ public class FXMLController implements Initializable {
 
 
     public void mouseClickedInSubkeys(MouseEvent mouseEvent) {
-
     }
+
+    //shared variable -> later used in several methods
     String sharedSubKeyVar;
-    //Getter subkey
+
+    //getter subkey
     public String getSubKey(String subKeyGetter){
         return subKeyGetter;
     }
@@ -638,6 +621,123 @@ public class FXMLController implements Initializable {
 
     public void subCattegoryClicked(MouseEvent mouseEvent) {
         sharedSubKeyVar = getSubKey(listViewSubKeys.getSelectionModel().getSelectedItem().toString());
+    }
 
+    //buttons 200€,100€,50€,20€,10€ and 5€
+    public void button200Clicked(ActionEvent actionEvent) {
+        if(sum < 200){
+            returnAmount.setText(String.valueOf(200-sum));
+        }
+        else{
+            System.out.println("More money given, than amount of button");
+        }
+    }
+
+    public void button100Clicked(ActionEvent actionEvent) {
+        if (sum < 100){
+            returnAmount.setText(String.valueOf(100-sum));
+        }
+        else{
+            alert.setTitle("");
+            alert.setHeaderText("Error: ");
+            alert.setContentText("More money given, than amount chosen by button");
+            alert.showAndWait();
+
+            System.out.println("More money given, than amount of button");
+        }
+    }
+
+    public void button50Clicked(ActionEvent actionEvent) {
+        if (sum < 50){
+            returnAmount.setText(String.valueOf(50-sum));
+        }
+        else{
+            alert.setTitle("");
+            alert.setHeaderText("Error: ");
+            alert.setContentText("More money given, than amount chosen by button");
+            alert.showAndWait();
+
+            System.out.println("More money given, than amount of button");
+        }
+    }
+
+    public void button20Clicked(ActionEvent actionEvent) {
+        if (sum < 20){
+            returnAmount.setText(String.valueOf(20-sum));
+        }
+        else{
+            alert.setTitle("");
+            alert.setHeaderText("Error: ");
+            alert.setContentText("More money given, than amount chosen by button");
+            alert.showAndWait();
+
+            System.out.println("More money given, than amount of button");
+        }
+    }
+
+    public void button10Clicked(ActionEvent actionEvent) {
+        if (sum < 10){
+            returnAmount.setText(String.valueOf(10-sum));
+        }
+        else{
+            alert.setTitle("");
+            alert.setHeaderText("Error: ");
+            alert.setContentText("More money given, than amount chosen by button");
+            alert.showAndWait();
+
+            System.out.println("More money given, than amount of button");
+        }
+    }
+
+    public void button5Clicked(ActionEvent actionEvent) {
+        if (sum < 5){
+            returnAmount.setText(String.valueOf(5-sum));
+        }
+        else{
+            alert.setTitle("");
+            alert.setHeaderText("Error: ");
+            alert.setContentText("More money given, than amount chosen by button");
+            alert.showAndWait();
+
+            System.out.println("More money given, than amount of button");
+        }
+    }
+
+    private void formatSystem() {
+    }
+
+    //new customer button
+    //clears everything (textFields, listViews etc.)
+    public void cleanAllButtonClicked(ActionEvent actionEvent) {
+
+        //clear all listViews and selections;
+        listViewSubKeys.getItems().clear();
+        listViewOrder.getItems().clear();
+        listView.getItems().clear();
+
+        //clear all textFields
+        moneyTipped.clear();
+        moneyGiven.clear();
+        totalAmount.clear();
+        returnAmount.clear();
+
+        //set sum to 0;
+        sum = 0;
+
+        //System.out.println("------------------");
+        //System.out.println("------------------");
+        System.out.println("NEW SUM AFTER CLEAR: " + sum);
+    }
+
+    // < button -> remove the item selected in listViewOrder and subtract the value of list item chosen from sum
+    public void removeItemClicked(ActionEvent actionEvent) {
+        int selectedIdx = listViewOrder.getSelectionModel().getSelectedIndex();
+        listViewOrder.getItems().remove(selectedIdx);
+
+
+        //trebalo bi da brise poslednji index iz liste
+        //da li se ovim kodom ispod smanjuje SUM?
+        //int index = IME_LISTE.size() -1;
+        //IME_LISTE.remove(index);
     }
 }

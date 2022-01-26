@@ -12,9 +12,10 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projekt.FXMLController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="546.0" prefWidth="1100.0" styleClass="background" stylesheets="@css.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projekt.FXMLController">
    <children>
       <ImageView fx:id="userImage" fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -25,30 +26,39 @@
       <Button fx:id="settingsButton" layoutX="646.0" layoutY="77.0" mnemonicParsing="false" onAction="#settingsButtonClicked" prefHeight="25.0" prefWidth="84.0" text="Settings" />
       <ScrollPane layoutX="23.0" layoutY="199.0" prefHeight="66.0" prefWidth="707.0">
          <content>
-            <ListView fx:id="listView" onMouseClicked="#categoryClicked" orientation="HORIZONTAL" prefHeight="46.0" prefWidth="703.0" />
+            <ListView fx:id="listView" onMouseClicked="#categoryClicked" orientation="HORIZONTAL" prefHeight="63.0" prefWidth="705.0" />
          </content></ScrollPane>
       <Button fx:id="cashPaymentPayButton" layoutX="608.0" layoutY="497.0" mnemonicParsing="false" onAction="#cashPaymentButtonClicked" prefHeight="25.0" prefWidth="122.0" text="Pay in Cash" />
       <Button fx:id="cardPaymentButton" layoutX="472.0" layoutY="497.0" mnemonicParsing="false" onAction="#cardPaymentButtonClicked" prefHeight="25.0" prefWidth="122.0" text="Pay with Card" />
       <Text layoutX="473.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order" wrappingWidth="82.13671875" />
       <ScrollPane fx:id="order" layoutX="472.0" layoutY="298.0" prefHeight="188.0" prefWidth="258.0">
          <content>
-            <ListView fx:id="listViewOrder" onMouseClicked="#subCattegoryClicked" prefHeight="188.0" prefWidth="240.0" />
+            <ListView fx:id="listViewOrder" onMouseClicked="#subCategoryClicked" prefHeight="186.0" prefWidth="256.0" />
          </content></ScrollPane>
-      <Text fx:id="productsId" layoutX="24.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Products" wrappingWidth="82.13671875" />
-      <Button fx:id="listButton" layoutX="191.0" layoutY="170.0" mnemonicParsing="false" onAction="#listButtonClicked" text="Load Categories" />
+      <Text fx:id="productsId" fill="WHITE" layoutX="24.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Products" wrappingWidth="82.13671875">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <Button fx:id="listButton" layoutX="191.0" layoutY="170.0" mnemonicParsing="false" onAction="#listButtonClicked" styleClass="roundButton" stylesheets="@css.css" text="Load Categories" />
       <ScrollPane layoutX="22.0" layoutY="299.0" prefHeight="223.0" prefWidth="395.0">
          <content>
-            <ListView fx:id="listViewSubKeys" onMouseClicked="#mouseClickedInSubkeys" prefHeight="221.0" prefWidth="392.0" />
+            <ListView fx:id="listViewSubKeys" onMouseClicked="#mouseClickedInSubkeys" prefHeight="221.0" prefWidth="393.0" />
          </content>
       </ScrollPane>
       <Button fx:id="listButtonSubcattegories" layoutX="351.0" layoutY="170.0" mnemonicParsing="false" onAction="#isButtonSubcattegoriesClicked" text="Load Subcategories" />
       <Button fx:id="addInOrder" layoutX="432.0" layoutY="359.0" mnemonicParsing="false" onAction="#addInOrderClicked" text="&gt;" />
-      <Button layoutX="432.0" layoutY="430.0" mnemonicParsing="false" text="&lt;" />
-      <Text layoutX="805.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Money given" wrappingWidth="133.13671875" />
-      <TextField fx:id="moneyGiven" layoutX="909.0" layoutY="30.0" />
-      <Text layoutX="805.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Money tipped" wrappingWidth="133.13671875" />
-      <TextField fx:id="moneyTipped" layoutX="909.0" layoutY="77.0" />
-      <GridPane layoutX="840.0" layoutY="146.0" prefHeight="226.0" prefWidth="197.0">
+      <Button fx:id="removeITem" layoutX="432.0" layoutY="430.0" mnemonicParsing="false" onAction="#removeItemClicked" text="&lt;" />
+      <Text fill="WHITE" layoutX="781.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Money given" wrappingWidth="133.13671875">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <TextField fx:id="moneyGiven" layoutX="897.0" layoutY="139.0" />
+      <Text fill="WHITE" layoutX="781.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Money tipped" wrappingWidth="133.13671875">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <TextField fx:id="moneyTipped" layoutX="897.0" layoutY="180.0" />
+      <GridPane layoutX="873.0" layoutY="217.0" prefHeight="226.0" prefWidth="197.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -59,7 +69,7 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button alignment="CENTER" maxWidth="56.0" minWidth="55.0" mnemonicParsing="false" text="200€">
+            <Button fx:id="button200" alignment="CENTER" maxWidth="56.0" minWidth="55.0" mnemonicParsing="false" onAction="#button200Clicked" text="200€">
                <padding>
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </padding>
@@ -67,7 +77,7 @@
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </GridPane.margin>
             </Button>
-            <Button alignment="CENTER" mnemonicParsing="false" text="100€" GridPane.columnIndex="1">
+            <Button fx:id="button100" alignment="CENTER" mnemonicParsing="false" onAction="#button100Clicked" text="100€" GridPane.columnIndex="1">
                <padding>
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </padding>
@@ -75,7 +85,7 @@
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </GridPane.margin>
             </Button>
-            <Button alignment="CENTER" minWidth="56.0" mnemonicParsing="false" text="50€" GridPane.rowIndex="1">
+            <Button fx:id="button50" alignment="CENTER" minWidth="56.0" mnemonicParsing="false" onAction="#button50Clicked" text="50€" GridPane.rowIndex="1">
                <padding>
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </padding>
@@ -83,7 +93,7 @@
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </GridPane.margin>
             </Button>
-            <Button alignment="CENTER" minWidth="56.0" mnemonicParsing="false" text="20€" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Button fx:id="button20" alignment="CENTER" minWidth="56.0" mnemonicParsing="false" onAction="#button20Clicked" text="20€" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <padding>
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </padding>
@@ -91,7 +101,7 @@
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </GridPane.margin>
             </Button>
-            <Button alignment="CENTER" minWidth="56.0" mnemonicParsing="false" text="20€" GridPane.rowIndex="2">
+            <Button fx:id="button10" alignment="CENTER" minWidth="56.0" mnemonicParsing="false" onAction="#button10Clicked" text="10€" GridPane.rowIndex="2">
                <padding>
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </padding>
@@ -99,7 +109,8 @@
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </GridPane.margin>
             </Button>
-            <Button alignment="CENTER" minWidth="56.0" mnemonicParsing="false" text="5€" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Button fx:id="button5" alignment="CENTER" minWidth="56.0" mnemonicParsing="false" onAction="#button5Clicked" text="5€" GridPane.columnIndex="1" GridPane.rowIndex="2">
+
                <padding>
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </padding>
@@ -109,10 +120,18 @@
             </Button>
          </children>
       </GridPane>
-      <Text layoutX="805.0" layoutY="435.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Return" wrappingWidth="82.13671875" />
-      <Text layoutX="805.0" layoutY="397.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total" wrappingWidth="82.13671875" />
-      <TextField fx:id="returnAmount" editable="false" layoutX="909.0" layoutY="418.0" prefHeight="25.0" prefWidth="149.0" />
-      <TextField fx:id="totalAmount" editable="false" layoutX="909.0" layoutY="380.0" onAction="#addInOrderClicked" />
+
+      <Text fill="WHITE" layoutX="781.0" layoutY="514.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Return" wrappingWidth="82.13671875">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <Text fill="WHITE" layoutX="781.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total" wrappingWidth="82.13671875">
+         <font>
+            <Font size="14.0" />
+         </font></Text>
+      <TextField fx:id="returnAmount" editable="false" layoutX="897.0" layoutY="497.0" prefHeight="25.0" prefWidth="149.0" />
+      <TextField fx:id="totalAmount" editable="false" layoutX="897.0" layoutY="462.0" onAction="#addInOrderClicked" />
+      <Button fx:id="cleanAllButton" layoutX="526.0" layoutY="170.0" mnemonicParsing="false" onAction="#cleanAllButtonClicked" text="New Customer" />
       <Label fx:id="userName" layoutX="164.0" layoutY="43.0" prefHeight="17.0" prefWidth="173.0" text="UserName" />
       <Label fx:id="userRole" layoutX="164.0" layoutY="73.0" prefHeight="17.0" prefWidth="173.0" text="UserRole" />
    </children>
