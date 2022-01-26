@@ -476,7 +476,7 @@ public class FXMLController implements Initializable {
     //loads Subkeys on Buttonclick
     //displays subkeys on viewList
     ArrayList<String> listOfSubkeys;
-    public String isButtonSubcattegoriesClicked() {
+    public String isButtonSubcategoriesClicked() {
         ArrayList<String> listOfMainKeys = listButtonClicked();
         int indexOfMainKey = listOfMainKeys.indexOf(sharedVar);
 
@@ -572,7 +572,7 @@ public class FXMLController implements Initializable {
 
 
         // Loading SubKeys from MainPage and also the Prices of the respective SubKey
-        String mainKeyIndexStringClicked = isButtonSubcattegoriesClicked();
+        String mainKeyIndexStringClicked = isButtonSubcategoriesClicked();
         mainPage.getsubKeyFromJson(mainKeyIndexStringClicked);
         mainPage.getPriceFromsubKeys(mainKeyIndexStringClicked);
 

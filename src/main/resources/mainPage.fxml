@@ -35,7 +35,7 @@
             <ListView fx:id="listViewSubKeys" onMouseClicked="#mouseClickedInSubkeys" prefHeight="221.0" prefWidth="392.0" />
          </content>
       </ScrollPane>
-      <Button fx:id="listButtonSubcattegories" layoutX="351.0" layoutY="170.0" mnemonicParsing="false" onAction="#isButtonSubcattegoriesClicked" text="Load Subcategories" />
+      <Button fx:id="listButtonSubcattegories" layoutX="351.0" layoutY="170.0" mnemonicParsing="false" onAction="#isButtonSubcategoriesClicked" text="Load Subcategories" />
       <Button fx:id="addInOrder" layoutX="432.0" layoutY="359.0" mnemonicParsing="false" onAction="#addInOrderClicked" text="&gt;" />
       <Button layoutX="432.0" layoutY="430.0" mnemonicParsing="false" text="&lt;" />
       <Text layoutX="805.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Money given" wrappingWidth="133.13671875" />
@@ -85,7 +85,7 @@
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </GridPane.margin>
             </Button>
-            <Button alignment="CENTER" minWidth="56.0" mnemonicParsing="false" text="10€" GridPane.rowIndex="2">
+            <Button alignment="CENTER" minWidth="56.0" mnemonicParsing="false" text="20€" GridPane.rowIndex="2">
                <padding>
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </padding>
