@@ -231,6 +231,49 @@ public class FXMLController implements Initializable {
 
     }
 
+    public void changePassword(ActionEvent e) {
+
+        for (int i = 0; i < User.getUsers().size(); i++) {
+            if (User.getUsers().get(i).equals(loadedUser)) {
+                    User.getUsers().get(i).setPassword(passwordusermgmt.getText());
+            }
+        }
+        //User.updateUserDatabase();
+        //User.loadDataFromJson();
+
+        ObservableList<User> peter = FXCollections.<User>observableArrayList();
+        peter.addAll(User.getUsers());
+        //System.out.println(peter.toString());
+        firstname.setCellValueFactory(new PropertyValueFactory<User, String>("firstname"));
+        surname.setCellValueFactory(new PropertyValueFactory<User, String>("surname"));
+        role.setCellValueFactory(new PropertyValueFactory<User, String>("role"));
+        tableusermgmt.setItems(peter);
+        tableusermgmt.getColumns().get(0).setVisible(false);
+        tableusermgmt.getColumns().get(0).setVisible(true);
+
+    }
+
+    public void changeUsername(ActionEvent e) {
+        for (int i = 0; i < User.getUsers().size(); i++) {
+            if (User.getUsers().get(i).equals(loadedUser)) {
+                User.getUsers().get(i).setUsername(usernameusermgmt.getText());
+            }
+        }
+        //User.updateUserDatabase();
+        //User.loadDataFromJson();
+
+        ObservableList<User> peter = FXCollections.<User>observableArrayList();
+        peter.addAll(User.getUsers());
+        //System.out.println(peter.toString());
+        firstname.setCellValueFactory(new PropertyValueFactory<User, String>("firstname"));
+        surname.setCellValueFactory(new PropertyValueFactory<User, String>("surname"));
+        role.setCellValueFactory(new PropertyValueFactory<User, String>("role"));
+        tableusermgmt.setItems(peter);
+        tableusermgmt.getColumns().get(0).setVisible(false);
+        tableusermgmt.getColumns().get(0).setVisible(true);
+
+    }
+
     public void createNewUser(ActionEvent actionEvent) {
 
 
@@ -268,6 +311,8 @@ public class FXMLController implements Initializable {
 
     }
 
+
+
     // Main Page Methods
     public void userChangeButtonClicked(ActionEvent actionEvent) {
         Parent root;
@@ -297,6 +342,9 @@ public class FXMLController implements Initializable {
             e.printStackTrace();
         }
     }
+
+
+
     /*
         public void cashPaymentButtonClicked(ActionEvent actionEvent) {
             Parent root;

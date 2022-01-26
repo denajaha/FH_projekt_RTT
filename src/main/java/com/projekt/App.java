@@ -42,7 +42,7 @@ public class App extends Application {
     public static void main(String[] args) {
         /* Testmethoden Antoine*/
 
-    /*
+/*
         System.out.println("hello");
         User user1 = User.createNewUser("Max", "Mustermann", "MaMu", "test", "admin");
         System.out.println(user1.toString());
@@ -62,8 +62,10 @@ public class App extends Application {
 
         User.loadDataFromJson();
         System.out.println(User.checkCredentials("MaMu", "test"));
-        */
+*/
         launch(args);
+
+
 
 
 
