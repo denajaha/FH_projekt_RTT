@@ -57,7 +57,6 @@ public class User {
         }
 
         userlist.add(this);
-        updateUserDatabase();
     }
 
     //Methode zum erstellen eines neuen Users

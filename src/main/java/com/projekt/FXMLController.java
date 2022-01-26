@@ -150,6 +150,7 @@ public class FXMLController implements Initializable {
         }
     }
 
+    //Method called on welcome enter clicked
     public void buttonPressed(KeyEvent c)
     {
         if(c.getCode().toString().equals("ENTER"))
@@ -167,12 +168,17 @@ public class FXMLController implements Initializable {
                     //Turnaround
                     Stage tempStage = (Stage)loginButton.getScene().getWindow();//use any one object
                     tempStage.close();
-
+                    Session session = new Session(User.getUserCredentials(usernameInput.getText(), passwordInput.getText()));
+                    App.setSession(session);
+                    //Set Label
+                    Label label = (Label) root.lookup("#userName");
+                    label.setText(App.getSession().getUser().getFirstname()+"  "+App.getSession().getUser().getSurname());
+                    Label label2 = (Label) root.lookup("#userRole");
+                    label2.setText(App.getSession().getUser().getRole());
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                Session session = new Session(User.getUserCredentials(usernameInput.getText(), passwordInput.getText()));
-                App.setSession(session);
+
             } else {
                 try {
                     Parent popup = FXMLLoader.load(getClass().getClassLoader().getResource("errorLogin.fxml"));
@@ -293,7 +299,7 @@ public class FXMLController implements Initializable {
         surname.setCellValueFactory(new PropertyValueFactory<User, String>("surname"));
         role.setCellValueFactory(new PropertyValueFactory<User, String>("role"));
         tableusermgmt.setItems(data);
-
+        User.updateUserDatabase();
 
     }
 
