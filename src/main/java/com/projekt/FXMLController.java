@@ -111,6 +111,7 @@ public class FXMLController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
     }
 
+
     public FXMLController() {
 
     }
@@ -129,7 +130,7 @@ public class FXMLController implements Initializable {
                 ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
                 Session session = new Session(User.getUserCredentials(usernameInput.getText(), passwordInput.getText()));
                 App.setSession(session);
-                //usernamemainpage.setText(App.getSession().getUser().getFirstname()+"  "+App.getSession().getUser().getFirstname());
+                //stage.usernamemainpage.setText(App.getSession().getUser().getFirstname()+"  "+App.getSession().getUser().getFirstname());
             } catch (IOException e) {
                 e.printStackTrace();
             }
