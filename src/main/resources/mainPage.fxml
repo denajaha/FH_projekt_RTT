@@ -32,7 +32,7 @@
       <Text layoutX="473.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Order" wrappingWidth="82.13671875" />
       <ScrollPane fx:id="order" layoutX="472.0" layoutY="298.0" prefHeight="188.0" prefWidth="258.0">
          <content>
-            <ListView fx:id="listViewOrder" onMouseClicked="#subCategoryClicked" prefHeight="188.0" prefWidth="240.0" />
+            <ListView fx:id="listViewOrder" onMouseClicked="#subCattegoryClicked" prefHeight="188.0" prefWidth="240.0" />
          </content></ScrollPane>
       <Text fx:id="productsId" layoutX="24.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Products" wrappingWidth="82.13671875" />
       <Button fx:id="listButton" layoutX="191.0" layoutY="170.0" mnemonicParsing="false" onAction="#listButtonClicked" text="Load Categories" />
@@ -41,7 +41,7 @@
             <ListView fx:id="listViewSubKeys" onMouseClicked="#mouseClickedInSubkeys" prefHeight="221.0" prefWidth="392.0" />
          </content>
       </ScrollPane>
-      <Button fx:id="listButtonSubcattegories" layoutX="351.0" layoutY="170.0" mnemonicParsing="false" onAction="#isButtonSubcategoriesClicked" text="Load Subcategories" />
+      <Button fx:id="listButtonSubcattegories" layoutX="351.0" layoutY="170.0" mnemonicParsing="false" onAction="#isButtonSubcattegoriesClicked" text="Load Subcategories" />
       <Button fx:id="addInOrder" layoutX="432.0" layoutY="359.0" mnemonicParsing="false" onAction="#addInOrderClicked" text="&gt;" />
       <Button layoutX="432.0" layoutY="430.0" mnemonicParsing="false" text="&lt;" />
       <Text layoutX="805.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Money given" wrappingWidth="133.13671875" />
