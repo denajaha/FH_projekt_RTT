@@ -48,10 +48,9 @@ public class FXMLController implements Initializable {
     //mainPage
     public ImageView userImage;
     @FXML
-    public Label usernamemainpage;
-    public Text userName;
+    public Label userName;
     @FXML
-    public Text userRole;
+    public Label userRole;
     public Button userChangeButton;
     public Button settingsButton;
     public Button cashPaymentButton;
@@ -130,7 +129,11 @@ public class FXMLController implements Initializable {
                 ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
                 Session session = new Session(User.getUserCredentials(usernameInput.getText(), passwordInput.getText()));
                 App.setSession(session);
-                //stage.usernamemainpage.setText(App.getSession().getUser().getFirstname()+"  "+App.getSession().getUser().getFirstname());
+                //Set Label
+                Label label = (Label) root.lookup("#userName");
+                label.setText(App.getSession().getUser().getFirstname()+"  "+App.getSession().getUser().getSurname());
+                Label label2 = (Label) root.lookup("#userRole");
+                label2.setText(App.getSession().getUser().getRole());
             } catch (IOException e) {
                 e.printStackTrace();
             }
