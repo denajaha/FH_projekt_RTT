@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import com.sun.javafx.scene.control.LabeledImpl;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -46,7 +47,10 @@ public class FXMLController implements Initializable {
 
     //mainPage
     public ImageView userImage;
+    @FXML
+    public Label usernamemainpage;
     public Text userName;
+    @FXML
     public Text userRole;
     public Button userChangeButton;
     public Button settingsButton;
@@ -105,7 +109,6 @@ public class FXMLController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
     }
 
     public FXMLController() {
@@ -124,11 +127,12 @@ public class FXMLController implements Initializable {
                 stage.show();
                 // Hide this current window (if this is what you want)
                 ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+                Session session = new Session(User.getUserCredentials(usernameInput.getText(), passwordInput.getText()));
+                App.setSession(session);
+                //usernamemainpage.setText(App.getSession().getUser().getFirstname()+"  "+App.getSession().getUser().getFirstname());
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Session session = new Session(User.getUserCredentials(usernameInput.getText(), passwordInput.getText()));
-            App.setSession(session);
         } else {
             try {
                 Parent popup = FXMLLoader.load(getClass().getClassLoader().getResource("errorLogin.fxml"));
