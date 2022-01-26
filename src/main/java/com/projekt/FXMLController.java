@@ -93,7 +93,6 @@ public class FXMLController implements Initializable {
     public Button listButtonSubcattegories;
     public Button addInOrder;
     public ListView listViewOrder;
-    public ListView listViewProducts2;
     @FXML
     public TextField moneyGiven;
     @FXML
@@ -334,6 +333,20 @@ public class FXMLController implements Initializable {
             stage.show();
             // Hide this current window (if this is what you want)
             ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void backToSettingsPageButtonClicked(ActionEvent actionEvent) {
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("settings.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            stage.setTitle("RTT Cash Register");
+            Scene scene = new Scene(root, 750, 550);
+            stage.setScene(scene);
+            stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
