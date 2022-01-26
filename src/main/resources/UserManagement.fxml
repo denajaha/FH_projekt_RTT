@@ -19,7 +19,7 @@
       <TextField fx:id="roleuserusermgmt" layoutX="289.0" layoutY="142.0" text="Rolle" />
       <TextField fx:id="usernameusermgmt" layoutX="289.0" layoutY="180.0" text="Username" />
       <TextField fx:id="passwordusermgmt" layoutX="289.0" layoutY="224.0" text="Password" />
-      <TextArea layoutX="458.0" layoutY="178.0" prefHeight="78.0" prefWidth="198.0" text="!!ACHTUNG!!&#10;Username und Passwort können &#10;IMMER nur in Kombination von &#10;beiden geändert werden." />
+      <Label layoutX="458.0" layoutY="178.0" prefHeight="78.0" prefWidth="198.0" text="!!ACHTUNG!!&#10;Username und Passwort können &#10;IMMER nur in Kombination von &#10;beiden geändert werden." />
       <Label layoutX="289.0" layoutY="269.0" text="----CREATE NEW USER ----" />
       <TextField fx:id="nameusermgmt1" layoutX="286.0" layoutY="296.0" text="Name" />
       <TextField fx:id="surnameusermgmt1" layoutX="465.0" layoutY="296.0" text="First name" />
