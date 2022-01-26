@@ -354,7 +354,7 @@ public class FXMLController implements Initializable {
             root = FXMLLoader.load(getClass().getClassLoader().getResource("mainPage.fxml"));
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setTitle("RTT Cash Register");
-            Scene scene = new Scene(root, 750, 550);
+            Scene scene = new Scene(root, 1100, 546);
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
