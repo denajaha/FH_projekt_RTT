@@ -289,7 +289,6 @@ public class User {
         }
     }
 
-
     //toString Methode für die Ausgabe auf der Konsole
     //Zum testen
     @Override
