@@ -156,6 +156,9 @@ public class FXMLController implements Initializable {
                     stage.show();
                     // Hide this current window (if this is what you want)
                     //((Node) (KeyEvent.getSource())).getScene().getWindow().hide();
+                    //Turnaround
+                    Stage tempStage = (Stage)loginButton.getScene().getWindow();//use any one object
+                    tempStage.close();
 
                 } catch (IOException e) {
                     e.printStackTrace();
