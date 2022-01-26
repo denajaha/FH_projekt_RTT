@@ -156,6 +156,7 @@ public class FXMLController implements Initializable {
                     stage.show();
                     // Hide this current window (if this is what you want)
                     //((Node) (KeyEvent.getSource())).getScene().getWindow().hide();
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
