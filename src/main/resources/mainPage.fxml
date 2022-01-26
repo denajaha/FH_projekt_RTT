@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -21,10 +22,8 @@
             <Image url="@login_user_logo.png" />
          </image>
       </ImageView>
-      <Text fx:id="userName" layoutX="164.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="userNamePlatzhalter" wrappingWidth="133.13671875" />
-      <Text fx:id="userRole" layoutX="164.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="userRolePlatzhalter" wrappingWidth="133.13671875" />
-      <Button fx:id="userChangeButton" layoutX="986.0" layoutY="15.0" mnemonicParsing="false" onAction="#userChangeButtonClicked" text="Change User" />
-      <Button fx:id="settingsButton" layoutX="986.0" layoutY="54.0" mnemonicParsing="false" onAction="#settingsButtonClicked" prefHeight="25.0" prefWidth="84.0" text="Settings" />
+      <Button fx:id="userChangeButton" layoutX="646.0" layoutY="32.0" mnemonicParsing="false" onAction="#userChangeButtonClicked" text="Change User" />
+      <Button fx:id="settingsButton" layoutX="646.0" layoutY="77.0" mnemonicParsing="false" onAction="#settingsButtonClicked" prefHeight="25.0" prefWidth="84.0" text="Settings" />
       <ScrollPane layoutX="23.0" layoutY="199.0" prefHeight="66.0" prefWidth="707.0">
          <content>
             <ListView fx:id="listView" onMouseClicked="#categoryClicked" orientation="HORIZONTAL" prefHeight="63.0" prefWidth="705.0" />
@@ -111,6 +110,7 @@
                </GridPane.margin>
             </Button>
             <Button fx:id="button5" alignment="CENTER" minWidth="56.0" mnemonicParsing="false" onAction="#button5Clicked" text="5€" GridPane.columnIndex="1" GridPane.rowIndex="2">
+
                <padding>
                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
                </padding>
@@ -120,6 +120,7 @@
             </Button>
          </children>
       </GridPane>
+
       <Text fill="WHITE" layoutX="781.0" layoutY="514.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Return" wrappingWidth="82.13671875">
          <font>
             <Font size="14.0" />
@@ -131,5 +132,7 @@
       <TextField fx:id="returnAmount" editable="false" layoutX="897.0" layoutY="497.0" prefHeight="25.0" prefWidth="149.0" />
       <TextField fx:id="totalAmount" editable="false" layoutX="897.0" layoutY="462.0" onAction="#addInOrderClicked" />
       <Button fx:id="cleanAllButton" layoutX="526.0" layoutY="170.0" mnemonicParsing="false" onAction="#cleanAllButtonClicked" text="New Customer" />
+      <Label fx:id="userName" layoutX="164.0" layoutY="43.0" prefHeight="17.0" prefWidth="173.0" text="UserName" />
+      <Label fx:id="userRole" layoutX="164.0" layoutY="73.0" prefHeight="17.0" prefWidth="173.0" text="UserRole" />
    </children>
 </AnchorPane>

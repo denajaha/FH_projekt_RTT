@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import com.sun.javafx.scene.control.LabeledImpl;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.application.Platform;
@@ -28,6 +30,8 @@ import javafx.scene.control.TableView;
 import javafx.collections.ObservableList;
 import javafx.collections.FXCollections;
 
+import static javafx.scene.input.KeyEvent.*;
+
 public class FXMLController implements Initializable {
 
     //welcome
@@ -44,8 +48,10 @@ public class FXMLController implements Initializable {
 
     //mainPage
     public ImageView userImage;
-    public Text userName;
-    public Text userRole;
+    @FXML
+    public Label userName;
+    @FXML
+    public Label userRole;
     public Button userChangeButton;
     public Button settingsButton;
     public Button cashPaymentButton;
@@ -59,6 +65,8 @@ public class FXMLController implements Initializable {
     // cardPage
     public Button doneButton;
 
+    //ErrorPopu
+    public Button error_ok;
     //Usermanagement
     @FXML
     public TableView<User> tableusermgmt;
@@ -93,7 +101,6 @@ public class FXMLController implements Initializable {
     public Button listButtonSubcattegories;
     public Button addInOrder;
     public ListView listViewOrder;
-    public ListView listViewProducts2;
     @FXML
     public TextField moneyGiven;
     @FXML
@@ -111,10 +118,8 @@ public class FXMLController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        String javaVersion = System.getProperty("java.version");
-        String javafxVersion = System.getProperty("javafx.version");
-        //label.setText("Hello, JavaFX " + javafxVersion + "\nRunning on Java " + javaVersion + ".");
     }
+
 
     public FXMLController() {
 
@@ -136,25 +141,70 @@ public class FXMLController implements Initializable {
                 stage.show();
                 // Hide this current window (if this is what you want)
                 ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-
-
+                Session session = new Session(User.getUserCredentials(usernameInput.getText(), passwordInput.getText()));
+                App.setSession(session);
+                //Set Label
+                Label label = (Label) root.lookup("#userName");
+                label.setText(App.getSession().getUser().getFirstname()+"  "+App.getSession().getUser().getSurname());
+                Label label2 = (Label) root.lookup("#userRole");
+                label2.setText(App.getSession().getUser().getRole());
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            Session session = new Session(User.getUserCredentials(usernameInput.getText(), passwordInput.getText()));
-            App.setSession(session);
         } else {
-            Stage primaryStage = new Stage();
-            primaryStage.setTitle("Passwort Falsch");
-            Button btn = new Button();
-            btn.setText("PASSWORT FALSCH");
-            //btn.setOnAction((event) -> Platform.exit());
-            Pane root = new StackPane();
-            root.getChildren().add(btn);
-            primaryStage.setScene(new Scene(root, 200, 150));
-            primaryStage.show();
+            try {
+                Parent popup = FXMLLoader.load(getClass().getClassLoader().getResource("errorLogin.fxml"));
+                Stage primaryStage = new Stage();
+                primaryStage.setTitle("Passwort Falsch");
+                primaryStage.setScene(new Scene(popup, 200, 150));
+                primaryStage.show();
+            }catch (IOException e) {
+            e.printStackTrace();
+            }
         }
+    }
 
+    //Method called on welcome enter clicked
+    public void buttonPressed(KeyEvent c)
+    {
+        if(c.getCode().toString().equals("ENTER"))
+        {
+            if (User.checkCredentials(usernameInput.getText(), passwordInput.getText())) {
+                Parent root;
+                try {
+                    root = FXMLLoader.load(getClass().getClassLoader().getResource("mainPage.fxml"));
+                    Stage stage = new Stage();
+                    stage.setTitle("RTT Cash Register");
+                    stage.setScene(new Scene(root, 1100, 550));
+                    stage.show();
+                    // Hide this current window (if this is what you want)
+                    //((Node) (KeyEvent.getSource())).getScene().getWindow().hide();
+                    //Turnaround
+                    Stage tempStage = (Stage)loginButton.getScene().getWindow();//use any one object
+                    tempStage.close();
+                    Session session = new Session(User.getUserCredentials(usernameInput.getText(), passwordInput.getText()));
+                    App.setSession(session);
+                    //Set Label
+                    Label label = (Label) root.lookup("#userName");
+                    label.setText(App.getSession().getUser().getFirstname()+"  "+App.getSession().getUser().getSurname());
+                    Label label2 = (Label) root.lookup("#userRole");
+                    label2.setText(App.getSession().getUser().getRole());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            } else {
+                try {
+                    Parent popup = FXMLLoader.load(getClass().getClassLoader().getResource("errorLogin.fxml"));
+                    Stage primaryStage = new Stage();
+                    primaryStage.setTitle("Passwort Falsch");
+                    primaryStage.setScene(new Scene(popup, 200, 150));
+                    primaryStage.show();
+                }catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     //Usermanagement Methods
@@ -209,6 +259,49 @@ public class FXMLController implements Initializable {
 
     }
 
+    public void changePassword(ActionEvent e) {
+
+        for (int i = 0; i < User.getUsers().size(); i++) {
+            if (User.getUsers().get(i).equals(loadedUser)) {
+                    User.getUsers().get(i).setPassword(passwordusermgmt.getText());
+            }
+        }
+        //User.updateUserDatabase();
+        //User.loadDataFromJson();
+
+        ObservableList<User> peter = FXCollections.<User>observableArrayList();
+        peter.addAll(User.getUsers());
+        //System.out.println(peter.toString());
+        firstname.setCellValueFactory(new PropertyValueFactory<User, String>("firstname"));
+        surname.setCellValueFactory(new PropertyValueFactory<User, String>("surname"));
+        role.setCellValueFactory(new PropertyValueFactory<User, String>("role"));
+        tableusermgmt.setItems(peter);
+        tableusermgmt.getColumns().get(0).setVisible(false);
+        tableusermgmt.getColumns().get(0).setVisible(true);
+
+    }
+
+    public void changeUsername(ActionEvent e) {
+        for (int i = 0; i < User.getUsers().size(); i++) {
+            if (User.getUsers().get(i).equals(loadedUser)) {
+                User.getUsers().get(i).setUsername(usernameusermgmt.getText());
+            }
+        }
+        //User.updateUserDatabase();
+        //User.loadDataFromJson();
+
+        ObservableList<User> peter = FXCollections.<User>observableArrayList();
+        peter.addAll(User.getUsers());
+        //System.out.println(peter.toString());
+        firstname.setCellValueFactory(new PropertyValueFactory<User, String>("firstname"));
+        surname.setCellValueFactory(new PropertyValueFactory<User, String>("surname"));
+        role.setCellValueFactory(new PropertyValueFactory<User, String>("role"));
+        tableusermgmt.setItems(peter);
+        tableusermgmt.getColumns().get(0).setVisible(false);
+        tableusermgmt.getColumns().get(0).setVisible(true);
+
+    }
+
     public void createNewUser(ActionEvent actionEvent) {
 
 
@@ -220,8 +313,12 @@ public class FXMLController implements Initializable {
         surname.setCellValueFactory(new PropertyValueFactory<User, String>("surname"));
         role.setCellValueFactory(new PropertyValueFactory<User, String>("role"));
         tableusermgmt.setItems(data);
+        User.updateUserDatabase();
 
+    }
 
+    public void closePopUp(ActionEvent actionEvent) {
+        ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     public void deleteUser(ActionEvent actionEvent) {
@@ -242,6 +339,8 @@ public class FXMLController implements Initializable {
 
     }
 
+
+
     // Main Page Methods
     public void userChangeButtonClicked(ActionEvent actionEvent) {
         Parent root;
@@ -261,9 +360,11 @@ public class FXMLController implements Initializable {
         Parent root;
         try {
             root = FXMLLoader.load(getClass().getClassLoader().getResource("settings.fxml"));
-            Stage stage = new Stage();
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setTitle("Settings");
-            stage.setScene(new Scene(root, 550, 550));
+            Scene scene = new Scene(root, 750, 550);
+            stage.close();
+            stage.setScene(scene);
             stage.show();
             // Hide this current window
             ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
@@ -271,30 +372,8 @@ public class FXMLController implements Initializable {
             e.printStackTrace();
         }
     }
-    /*
-        public void cashPaymentButtonClicked(ActionEvent actionEvent) {
-            Parent root;
-            try {
-                root = FXMLLoader.load(getClass().getClassLoader().getResource("barPage.fxml"));
-                Stage stage = new Stage();
-                stage.setTitle("View your Order");
-                stage.setScene(new Scene(root, 750, 550));
-                stage.show();
-                // Hide this current window (if this is what you want)
-                ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
-
-                //ArrayList<String> arrayListOfSubkeysInBarPage = clickedSubKeyInProducts;
-                System.out.println("New list:" + clickedSubKeyInProducts);
-                listViewProducts2.getItems().addAll(clickedSubKeyInProducts);
 
 
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-     */
     public void cashPaymentButtonClicked(ActionEvent actionEvent) {
         int moneyGivenVar = Integer.parseInt(moneyGiven.getText());
         int moneyTippedVar = Integer.parseInt(moneyTipped.getText());
@@ -332,7 +411,10 @@ public class FXMLController implements Initializable {
             root = FXMLLoader.load(getClass().getClassLoader().getResource("mainPage.fxml"));
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setTitle("RTT Cash Register");
-            Scene scene = new Scene(root, 1100, 550);
+
+            Scene scene = new Scene(root, 1100, 546);
+            stage.close();
+
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
@@ -346,7 +428,9 @@ public class FXMLController implements Initializable {
             root = FXMLLoader.load(getClass().getClassLoader().getResource("UserManagement.fxml"));
             Stage stage = new Stage();
             stage.setTitle("User Settings");
-            stage.setScene(new Scene(root, 750, 550));
+            Scene scene = new Scene(root, 750, 550);
+            stage.close();
+            stage.setScene(scene);
             stage.show();
             // Hide this current window (if this is what you want)
             ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
@@ -354,6 +438,23 @@ public class FXMLController implements Initializable {
             e.printStackTrace();
         }
     }
+
+
+    public void backToSettingsPageButtonClicked(ActionEvent actionEvent) {
+        Parent root;
+        try {
+            root = FXMLLoader.load(getClass().getClassLoader().getResource("settings.fxml"));
+            Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            stage.setTitle("RTT Cash Register");
+            Scene scene = new Scene(root, 750, 550);
+            stage.close();
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     //Denis&Filip
     //Button - Load Categories
@@ -518,7 +619,7 @@ public class FXMLController implements Initializable {
     }
 
 
-    public void subCategoryClicked(MouseEvent mouseEvent) {
+    public void subCattegoryClicked(MouseEvent mouseEvent) {
         sharedSubKeyVar = getSubKey(listViewSubKeys.getSelectionModel().getSelectedItem().toString());
     }
 

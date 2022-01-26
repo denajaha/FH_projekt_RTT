@@ -140,20 +140,14 @@ public class User {
     public void setSurname(String surname) {
         int index=-1;
         for(int i=0; i<userlist.size();i++){
-            if(userlist.get(i).getSurname().equals(this.surname)){
-                if(userlist.get(i).getFirstname().equals(this.firstname)
-                        && userlist.get(i).getSurname().equals(this.surname)
-                        && userlist.get(i).getUsername().equals(this.username)
-                        && userlist.get(i).getPassword().equals(this.password)
-                        && userlist.get(i).getRole().equals(this.role)){
+            if(userlist.get(i).equals(this)){
                     index=i;
                     break;
-                }
+
             }
         }
         userlist.get(index).surname = surname;
         this.surname = surname;
-        updateUserDatabase();
     }
 
     //Setter für Username
@@ -163,20 +157,15 @@ public class User {
     public void setUsername(String username) {
         int index=-1;
         for(int i=0; i<userlist.size();i++){
-            if(userlist.get(i).getFirstname().equals(this.username)){
-                if(userlist.get(i).getFirstname().equals(this.firstname)
-                        && userlist.get(i).getSurname().equals(this.surname)
-                        && userlist.get(i).getUsername().equals(this.username)
-                        && userlist.get(i).getPassword().equals(this.password)
-                        && userlist.get(i).getRole().equals(this.role)){
+            if(userlist.get(i).equals(this)){
                     index=i;
                     break;
-                }
             }
         }
         userlist.get(index).username = sha256(username);
         this.username = sha256(username);
-        setIntegrityKey(calculateIntegrityKey(this.username, this.getPassword()));
+        setIntegrityKey(sha256(this.username+this.password+sha256(this.role)));
+        updateUserDatabase();
     }
 
     //Setter für Passwort
@@ -185,20 +174,15 @@ public class User {
     public void setPassword(String password) {
         int index=-1;
         for(int i=0; i<userlist.size();i++){
-            if(userlist.get(i).getFirstname().equals(this.password)){
-                if(userlist.get(i).getFirstname().equals(this.firstname)
-                        && userlist.get(i).getSurname().equals(this.surname)
-                        && userlist.get(i).getUsername().equals(this.username)
-                        && userlist.get(i).getPassword().equals(this.password)
-                        && userlist.get(i).getRole().equals(this.role)){
+            if(userlist.get(i).equals(this)){
                     index=i;
                     break;
-                }
             }
         }
         userlist.get(index).password = sha256(password);;
         this.password = sha256(password);
-        setIntegrityKey(calculateIntegrityKey(this.username, this.password));
+        setIntegrityKey(sha256(this.username+this.password+sha256(this.role)));
+        updateUserDatabase();
     }
 
     //Setter für integrityKey
