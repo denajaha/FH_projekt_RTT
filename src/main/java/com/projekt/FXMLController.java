@@ -59,6 +59,8 @@ public class FXMLController implements Initializable {
     // cardPage
     public Button doneButton;
 
+    //ErrorPopu
+    public Button error_ok;
     //Usermanagement
     @FXML
     public TableView<User> tableusermgmt;
@@ -100,9 +102,7 @@ public class FXMLController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        String javaVersion = System.getProperty("java.version");
-        String javafxVersion = System.getProperty("javafx.version");
-        //label.setText("Hello, JavaFX " + javafxVersion + "\nRunning on Java " + javaVersion + ".");
+
     }
 
     public FXMLController() {
@@ -127,17 +127,16 @@ public class FXMLController implements Initializable {
             Session session = new Session(User.getUserCredentials(usernameInput.getText(), passwordInput.getText()));
             App.setSession(session);
         } else {
-            Stage primaryStage = new Stage();
-            primaryStage.setTitle("Passwort Falsch");
-            Button btn = new Button();
-            btn.setText("PASSWORT FALSCH");
-            btn.setOnAction((event) -> Platform.exit());
-            Pane root = new StackPane();
-            root.getChildren().add(btn);
-            primaryStage.setScene(new Scene(root, 200, 150));
-            primaryStage.show();
+            try {
+                Parent popup = FXMLLoader.load(getClass().getClassLoader().getResource("errorLogin.fxml"));
+                Stage primaryStage = new Stage();
+                primaryStage.setTitle("Passwort Falsch");
+                primaryStage.setScene(new Scene(popup, 200, 150));
+                primaryStage.show();
+            }catch (IOException e) {
+            e.printStackTrace();
+            }
         }
-
     }
 
     //Usermanagement Methods
@@ -205,6 +204,10 @@ public class FXMLController implements Initializable {
         tableusermgmt.setItems(data);
 
 
+    }
+
+    public void closePopUp(ActionEvent actionEvent) {
+        ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     public void deleteUser(ActionEvent actionEvent) {

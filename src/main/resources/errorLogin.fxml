@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="149.0" prefWidth="204.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projekt.FXMLController">
+   <children>
+      <Button fx:id="error_ok" layoutX="86.0" layoutY="101.0" mnemonicParsing="false" onAction="#closePopUp" text="OK" />
+      <Label layoutX="34.0" layoutY="34.0" text="Username oder Passwort" />
+      <Label layoutX="24.0" layoutY="51.0" text="falsch. Zum zurücksetzen an " />
+      <Label layoutX="42.0" layoutY="66.0" text="Administrator wenden" />
+   </children>
+</AnchorPane>
