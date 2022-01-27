@@ -595,7 +595,7 @@ public class FXMLController implements Initializable {
         mainPage.getsubKeyFromJson(mainKeyIndexStringClicked);
         mainPage.getPriceFromsubKeys(mainKeyIndexStringClicked);
 
-        // Saving our Subkeys and Prices into a List to work with them in our Simulation
+        // Saving our Subkeys and Prices into a List to work with them in our lists
         subkeys = mainPage.getSubKey();
         price = mainPage.getPrice();
 
