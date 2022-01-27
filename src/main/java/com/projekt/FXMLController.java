@@ -139,7 +139,7 @@ public class FXMLController implements Initializable {
                 root = FXMLLoader.load(getClass().getClassLoader().getResource("mainPage.fxml"));
                 Stage stage = new Stage();
                 stage.setTitle("RTT Cash Register");
-                stage.setScene(new Scene(root, 1100, 550));
+                stage.setScene(new Scene(root, 1115, 550));
                 stage.show();
                 // Hide this current window (if this is what you want)
                 ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
