@@ -6,8 +6,10 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.function.UnaryOperator;
 
 import com.sun.javafx.scene.control.LabeledImpl;
+import javafx.beans.value.ChangeListener;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
@@ -155,8 +157,8 @@ public class FXMLController implements Initializable {
             try {
                 Parent popup = FXMLLoader.load(getClass().getClassLoader().getResource("errorLogin.fxml"));
                 Stage primaryStage = new Stage();
-                primaryStage.setTitle("Passwort Falsch");
-                primaryStage.setScene(new Scene(popup, 200, 150));
+                primaryStage.setTitle("Wrong password");
+                primaryStage.setScene(new Scene(popup, 250, 150));
                 primaryStage.show();
             }catch (IOException e) {
             e.printStackTrace();
@@ -362,7 +364,7 @@ public class FXMLController implements Initializable {
             root = FXMLLoader.load(getClass().getClassLoader().getResource("settings.fxml"));
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             stage.setTitle("Settings");
-            Scene scene = new Scene(root, 750, 550);
+            Scene scene = new Scene(root, 500, 250);
             stage.close();
             stage.setScene(scene);
             stage.show();
@@ -395,7 +397,7 @@ public class FXMLController implements Initializable {
             root = FXMLLoader.load(getClass().getClassLoader().getResource("cardPage.fxml"));
             Stage stage = new Stage();
             stage.setTitle("Goodbye!");
-            stage.setScene(new Scene(root, 750, 550));
+            stage.setScene(new Scene(root, 500, 250));
             stage.show();
             // Hide this current window (if this is what you want)
             ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
@@ -428,7 +430,7 @@ public class FXMLController implements Initializable {
             root = FXMLLoader.load(getClass().getClassLoader().getResource("UserManagement.fxml"));
             Stage stage = new Stage();
             stage.setTitle("User Settings");
-            Scene scene = new Scene(root, 750, 550);
+            Scene scene = new Scene(root, 630, 460);
             stage.close();
             stage.setScene(scene);
             stage.show();
@@ -445,8 +447,8 @@ public class FXMLController implements Initializable {
         try {
             root = FXMLLoader.load(getClass().getClassLoader().getResource("settings.fxml"));
             Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            stage.setTitle("RTT Cash Register");
-            Scene scene = new Scene(root, 750, 550);
+            stage.setTitle("User Settings");
+            Scene scene = new Scene(root, 500, 250);
             stage.close();
             stage.setScene(scene);
             stage.show();
@@ -454,6 +456,18 @@ public class FXMLController implements Initializable {
             e.printStackTrace();
         }
     }
+
+
+    //replace characters with numbers
+    UnaryOperator<TextFormatter.Change> filter = change -> {
+        String text = change.getText();
+
+        if (text.matches("\\d?")) {
+            moneyGiven.setText(text.replaceAll("[^\\d]", "Please use a number!"));
+            moneyTipped.setText(text.replaceAll("[^\\d]", "Please use a number!"));
+        }
+        return null;
+    };
 
 
     //Denis&Filip

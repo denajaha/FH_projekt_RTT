@@ -4,12 +4,11 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="149.0" prefWidth="204.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projekt.FXMLController">
    <children>
       <Button fx:id="error_ok" layoutX="86.0" layoutY="101.0" mnemonicParsing="false" onAction="#closePopUp" text="OK" />
-      <Label layoutX="34.0" layoutY="34.0" text="Username oder Passwort" />
-      <Label layoutX="24.0" layoutY="51.0" text="falsch. Zum zurücksetzen an " />
-      <Label layoutX="42.0" layoutY="66.0" text="Administrator wenden" />
+      <Label layoutX="45.0" layoutY="34.0" text="Username or Passwort" />
+      <Label layoutX="20.0" layoutY="51.0" text="wrong. To reset the password " />
+      <Label layoutX="45.0" layoutY="66.0" text="Contact administrator" />
    </children>
 </AnchorPane>

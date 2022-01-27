@@ -4,10 +4,10 @@
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@css.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projekt.FXMLController">
+<AnchorPane prefHeight="250.0" prefWidth="500.0" styleClass="background" stylesheets="@css.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projekt.FXMLController">
    <children>
-      <Button fx:id="backToMainPageButton" layoutX="237.0" layoutY="217.0" mnemonicParsing="false" onAction="#backToMainPageButtonClicked" text="Back" />
-      <Button fx:id="saveButton" layoutX="318.0" layoutY="217.0" mnemonicParsing="false" onAction="#backToMainPageButtonClicked" text="Save" />
-      <ToggleButton fx:id="toggleButtonOne" layoutX="237.0" layoutY="126.0" mnemonicParsing="false" onAction="#userSettingOpen" prefHeight="33.0" prefWidth="126.0" text="User Settings" />
+      <Button fx:id="backToMainPageButton" layoutX="272.0" layoutY="166.0" mnemonicParsing="false" onAction="#backToMainPageButtonClicked" text="Back" />
+      <Button fx:id="saveButton" layoutX="187.0" layoutY="166.0" mnemonicParsing="false" onAction="#backToMainPageButtonClicked" text="Save" />
+      <ToggleButton fx:id="toggleButtonOne" layoutX="187.0" layoutY="103.0" mnemonicParsing="false" onAction="#userSettingOpen" prefHeight="33.0" prefWidth="126.0" text="User Settings" />
    </children>
 </AnchorPane>

@@ -6,8 +6,9 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="449.0" prefWidth="670.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projekt.FXMLController">
+<AnchorPane prefHeight="460.0" prefWidth="630.0" styleClass="background" stylesheets="@css.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.projekt.FXMLController">
    <children>
       <TableView fx:id="tableusermgmt" editable="true" layoutX="14.0" layoutY="21.0" prefHeight="419.0" prefWidth="263.0">
         <columns>
@@ -16,24 +17,30 @@
             <TableColumn fx:id="role" minWidth="0.0" prefWidth="72.0" text="Role" />
         </columns>
       </TableView>
-      <Button fx:id="loadUserButton" layoutX="289.0" layoutY="26.0" mnemonicParsing="false" onAction="#loadUser" prefHeight="26.0" prefWidth="154.0" text="Load  Userdata" />
-      <Button fx:id="savemodifieduserdata" layoutX="458.0" layoutY="63.0" mnemonicParsing="false" onAction="#savemodifieduser" prefHeight="26.0" prefWidth="198.0" text="Save modified Userdata" />
-      <TextField fx:id="nameusermgmt" layoutX="289.0" layoutY="63.0" text="Name" />
-      <TextField fx:id="surnameusermgmt" layoutX="289.0" layoutY="102.0" text="First name" />
-      <TextField fx:id="roleuserusermgmt" layoutX="289.0" layoutY="142.0" text="Rolle" />
-      <TextField fx:id="usernameusermgmt" layoutX="289.0" layoutY="180.0" text="Username" />
-      <TextField fx:id="passwordusermgmt" layoutX="289.0" layoutY="224.0" text="Password" />
-      <Label layoutX="289.0" layoutY="269.0" text="----CREATE NEW USER ----" />
-      <TextField fx:id="nameusermgmt1" layoutX="286.0" layoutY="296.0" text="Name" />
-      <TextField fx:id="surnameusermgmt1" layoutX="465.0" layoutY="296.0" text="First name" />
-      <TextField fx:id="roleusermgmt1" layoutX="286.0" layoutY="335.0" text="Role" />
-      <TextField fx:id="usernameusermgmt1" layoutX="286.0" layoutY="373.0" text="Username" />
-      <TextField fx:id="passwordusermgmt1" layoutX="465.0" layoutY="373.0" text="Password" />
-      <Button layoutX="286.0" layoutY="415.0" mnemonicParsing="false" onAction="#createNewUser" prefHeight="26.0" prefWidth="277.0" text="Create new User" />
-      <Label layoutX="492.0" layoutY="106.0" text="----Modify Userdata ----" />
-      <Button fx:id="deleteseleceduser" layoutX="458.0" layoutY="26.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="26.0" prefWidth="198.0" text="Delete selected Userdata" />
-      <Button fx:id="goBack" layoutX="573.0" layoutY="415.0" mnemonicParsing="false" onAction="#backToSettingsPageButtonClicked" prefHeight="26.0" prefWidth="41.0" text="Back" />
-      <Button fx:id="changePassword" layoutX="458.0" layoutY="224.0" mnemonicParsing="false" onAction="#changePassword" prefHeight="26.0" prefWidth="198.0" text="Change Password of selected user" />
-      <Button fx:id="changeUsername" layoutX="458.0" layoutY="180.0" mnemonicParsing="false" onAction="#changeUsername" prefHeight="26.0" prefWidth="198.0" text="Change Username of selected user" />
+      <Button fx:id="loadUserButton" layoutX="289.0" layoutY="26.0" mnemonicParsing="false" onAction="#loadUser" prefHeight="26.0" prefWidth="149.0" text="Load  Userdata" />
+      <Button fx:id="savemodifieduserdata" layoutX="458.0" layoutY="63.0" mnemonicParsing="false" onAction="#savemodifieduser" prefHeight="26.0" prefWidth="149.0" text="Save modified Userdata" />
+      <TextField fx:id="nameusermgmt" layoutX="289.0" layoutY="63.0" promptText="Name" />
+      <TextField fx:id="surnameusermgmt" layoutX="289.0" layoutY="102.0" promptText="First name" />
+      <TextField fx:id="roleuserusermgmt" layoutX="289.0" layoutY="142.0" promptText="Role" />
+      <TextField fx:id="usernameusermgmt" layoutX="289.0" layoutY="180.0" promptText="Username" />
+      <TextField fx:id="passwordusermgmt" layoutX="289.0" layoutY="224.0" promptText="Password" />
+      <Label layoutX="286.0" layoutY="269.0" text="---CREATE NEW USER ---" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <TextField fx:id="nameusermgmt1" layoutX="286.0" layoutY="296.0" promptText="Name" />
+      <TextField fx:id="surnameusermgmt1" layoutX="458.0" layoutY="296.0" promptText="First name" />
+      <TextField fx:id="roleusermgmt1" layoutX="286.0" layoutY="335.0" promptText="Role" />
+      <TextField fx:id="usernameusermgmt1" layoutX="286.0" layoutY="373.0" promptText="Username" />
+      <TextField fx:id="passwordusermgmt1" layoutX="458.0" layoutY="373.0" promptText="Password" />
+      <Button layoutX="286.0" layoutY="415.0" mnemonicParsing="false" onAction="#createNewUser" prefHeight="26.0" prefWidth="263.0" text="Create new User" />
+      <Label layoutX="452.0" layoutY="105.0" text="---MODIFY USERDATA ---" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Button fx:id="deleteseleceduser" layoutX="458.0" layoutY="26.0" mnemonicParsing="false" onAction="#deleteUser" prefHeight="26.0" prefWidth="149.0" text="Delete selected Userdata" />
+      <Button fx:id="goBack" layoutX="566.0" layoutY="415.0" mnemonicParsing="false" onAction="#backToSettingsPageButtonClicked" prefHeight="26.0" prefWidth="41.0" text="Back" />
+      <Button fx:id="changePassword" layoutX="458.0" layoutY="224.0" mnemonicParsing="false" onAction="#changePassword" prefHeight="26.0" prefWidth="149.0" text="Change Password of selected user" />
+      <Button fx:id="changeUsername" layoutX="458.0" layoutY="180.0" mnemonicParsing="false" onAction="#changeUsername" prefHeight="26.0" prefWidth="149.0" text="Change Username of selected user" />
    </children>
 </AnchorPane>
