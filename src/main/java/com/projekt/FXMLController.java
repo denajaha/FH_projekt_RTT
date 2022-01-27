@@ -115,7 +115,7 @@ public class FXMLController implements Initializable {
     public Button button10;
     public Button button5;
     public Button cleanAllButton;
-    public Button removeITem;
+
 
 
     @Override
@@ -588,9 +588,9 @@ public class FXMLController implements Initializable {
 
         keys = mainPage.getMainKey();
 
-        String pera = listViewSubKeys.getSelectionModel().getSelectedItem().toString();
-        int indexOfSubKey = listSubsCLEAN.indexOf(pera);
-        //clickedSubKeyInProducts.add(pera);
+        String selectedSubkeyForTheList = listViewSubKeys.getSelectionModel().getSelectedItem().toString();
+        int indexOfSubKey = listSubsCLEAN.indexOf(selectedSubkeyForTheList);
+
 
 
         // Loading SubKeys from MainPage and also the Prices of the respective SubKey
@@ -649,7 +649,7 @@ public class FXMLController implements Initializable {
             returnAmount.setText(String.valueOf(200-sum));
         }
         else{
-            System.out.println("More money given, than amount of button");
+            System.out.println("Less money given, than amount of button");
         }
     }
 
@@ -660,7 +660,7 @@ public class FXMLController implements Initializable {
         else{
             alert.setTitle("");
             alert.setHeaderText("Error: ");
-            alert.setContentText("More money given, than amount chosen by button");
+            alert.setContentText("Less money given, than amount chosen by button");
             alert.showAndWait();
         }
     }
@@ -672,7 +672,7 @@ public class FXMLController implements Initializable {
         else{
             alert.setTitle("");
             alert.setHeaderText("Error: ");
-            alert.setContentText("More money given, than amount chosen by button");
+            alert.setContentText("Less money given, than amount chosen by button");
             alert.showAndWait();
         }
     }
@@ -684,7 +684,7 @@ public class FXMLController implements Initializable {
         else{
             alert.setTitle("");
             alert.setHeaderText("Error: ");
-            alert.setContentText("More money given, than amount chosen by button");
+            alert.setContentText("Less money given, than amount chosen by button");
             alert.showAndWait();
         }
     }
@@ -696,7 +696,7 @@ public class FXMLController implements Initializable {
         else{
             alert.setTitle("");
             alert.setHeaderText("Error: ");
-            alert.setContentText("More money given, than amount chosen by button");
+            alert.setContentText("Less money given, than amount chosen by button");
             alert.showAndWait();
         }
     }
@@ -708,10 +708,10 @@ public class FXMLController implements Initializable {
         else{
             alert.setTitle("");
             alert.setHeaderText("Error: ");
-            alert.setContentText("More money given, than amount chosen by button");
+            alert.setContentText("Less money given, than amount chosen by button");
             alert.showAndWait();
 
-            System.out.println("More money given, than amount of button");
+            System.out.println("Less money given, than amount of button");
         }
     }
 
@@ -739,14 +739,15 @@ public class FXMLController implements Initializable {
     }
 
     // < button -> remove the item selected in listViewOrder and subtract the value of list item chosen from sum
+    // idea for removing items from the order
+    /*
     public void removeItemClicked(ActionEvent actionEvent) {
         int selectedIdx = listViewOrder.getSelectionModel().getSelectedIndex();
         listViewOrder.getItems().remove(selectedIdx);
 
 
-        //trebalo bi da brise poslednji index iz liste
-        //da li se ovim kodom ispod smanjuje SUM?
-        //int index = IME_LISTE.size() -1;
-        //IME_LISTE.remove(index);
+
     }
+
+     */
 }

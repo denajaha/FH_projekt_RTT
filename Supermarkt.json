@@ -4,8 +4,8 @@
             "Essig": "4",
             "Oel": "8",
             "Fertiggerichte": "3",
-            "Mehl": "1.50",
-            "Konserven": "2.50",
+            "Mehl": "1",
+            "Konserven": "2",
             "Reis": "3",
             "Zucker": "1"
         }
@@ -29,11 +29,11 @@
     ],
     "Gemuese": [
         {
-            "Gurken": "1.50",
+            "Gurken": "1",
             "Paprika": "1",
-            "Tomaten": "3.50",
+            "Tomaten": "3",
             "Kohl": "2",
-            "Melanzani": "1.80",
+            "Melanzani": "1",
             "Zucchini": "3",
             "Kuerbisse": "4"
         }
@@ -53,7 +53,7 @@
         {
             "Eis": "4",
             "Fertiggerichte": "4",
-            "Gemuese": "2.50",
+            "Gemuese": "2",
             "Pommes": "2"
         }
     ],
@@ -72,16 +72,16 @@
             "Knabberein": "2",
             "Nuesse": "3",
             "Nacho & Dips": "3",
-            "Snacks": "1.50"
+            "Snacks": "1"
         }
     ],
     "Alkoholfreie Getraenke": [
         {
-            "Eistee": "1.50",
+            "Eistee": "1",
             "Energydrinks": "1",
-            "Mineralwasser": "0.50",
+            "Mineralwasser": "2",
             "Saefte": "2",
-            "Sirupe": "2.50"
+            "Sirupe": "2"
         }
     ],
     "Alkoholische Getraenke": [
@@ -100,7 +100,7 @@
         {
             "Klopapier": "3",
             "Pflegemittel": "5",
-            "Muellsaecke": "2.50",
+            "Muellsaecke": "2",
             "Schuhpflege": "5",
             "Gluehbirnen": "5",
             "Waschmittel": "8",
@@ -112,7 +112,7 @@
             "Trockenfutter-Hund": "12",
             "Trockenfutter-Katze": "4",
             "Nassfutter-Hund": "1",
-            "Nassfutter-Katze": "0.50"
+            "Nassfutter-Katze": "1"
         }
     ]
 }
