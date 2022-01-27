@@ -553,10 +553,7 @@ public class FXMLController implements Initializable {
 
 
 
-    //------------------------------------------------------
-    //DA LI NAM TREBA OVO?
-    //slectedSubKey se ne koristi nigde! (Siv je)
-    //------------------------------------------------------
+
     String selectedSubkey = listViewSubKeys.getSelectionModel().getSelectedItem().toString();
     clickedSubKeyInProducts.add(selectedSubkey);
 
