@@ -379,6 +379,7 @@ public class FXMLController implements Initializable {
     public void cashPaymentButtonClicked(ActionEvent actionEvent) {
         int moneyGivenVar = Integer.parseInt(moneyGiven.getText());
         int moneyTippedVar = Integer.parseInt(moneyTipped.getText());
+
         if(moneyGiven.getText().trim().isEmpty() || moneyGiven.getText().length() == 0){
             moneyGiven.setText(String.valueOf(0));
             //moneyGivenVar = 0;
@@ -387,7 +388,12 @@ public class FXMLController implements Initializable {
             //moneyTippedVar = 0;
             moneyTipped.setText(String.valueOf(0));
         }
-        returnAmount.setText(String.valueOf(moneyGivenVar - moneyTippedVar - sum));
+        returnAmount.setText(String.valueOf(moneyGivenVar + moneyTippedVar - sum));
+        //if value of given money is negative
+        int negativeValue = Integer.parseInt(returnAmount.getText());
+        if(negativeValue < 0){
+            returnAmount.setText(String.valueOf("0"));
+        }
     }
 
 
@@ -656,8 +662,6 @@ public class FXMLController implements Initializable {
             alert.setHeaderText("Error: ");
             alert.setContentText("More money given, than amount chosen by button");
             alert.showAndWait();
-
-            System.out.println("More money given, than amount of button");
         }
     }
 
@@ -670,8 +674,6 @@ public class FXMLController implements Initializable {
             alert.setHeaderText("Error: ");
             alert.setContentText("More money given, than amount chosen by button");
             alert.showAndWait();
-
-            System.out.println("More money given, than amount of button");
         }
     }
 
@@ -684,8 +686,6 @@ public class FXMLController implements Initializable {
             alert.setHeaderText("Error: ");
             alert.setContentText("More money given, than amount chosen by button");
             alert.showAndWait();
-
-            System.out.println("More money given, than amount of button");
         }
     }
 
@@ -698,8 +698,6 @@ public class FXMLController implements Initializable {
             alert.setHeaderText("Error: ");
             alert.setContentText("More money given, than amount chosen by button");
             alert.showAndWait();
-
-            System.out.println("More money given, than amount of button");
         }
     }
 
@@ -738,9 +736,6 @@ public class FXMLController implements Initializable {
         //set sum to 0;
         sum = 0;
 
-        //System.out.println("------------------");
-        //System.out.println("------------------");
-        System.out.println("NEW SUM AFTER CLEAR: " + sum);
     }
 
     // < button -> remove the item selected in listViewOrder and subtract the value of list item chosen from sum
